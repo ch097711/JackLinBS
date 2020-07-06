@@ -1,0 +1,136 @@
+* {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-decoration: none;
+}
+a {
+    color: #f0f0f0;
+}
+
+body {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+    font-family: 'PT Sans', sans-serif;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #a5a5a5;
+}
+button {
+    position: relative;
+    text-decoration: none;
+    background-color: #86ae34;
+    color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.container {
+    margin: auto;
+    max-width: 1220px;
+    padding: 0 20px;
+    margin: 0 101.5px;
+    
+}
+
+.item-group {
+    display: flex;
+}
+
+.head {
+    background-color: #679509;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+.head .container {
+
+    
+    display: flex;
+    justify-content: space-between;
+
+}
+.head .container p{
+    padding: 5px 0;
+}
+
+.head .main-title {
+    padding: 5px 0;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+}
+
+.head .item-group {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    
+}
+.head .item-group .item{
+
+    font-size: 12px;
+    color: white;
+    border-right:white 1px solid ;
+    padding: 0 17px;;
+}
+.logo .item-group a{
+    color: #a5a5a5;
+    font-size: 14px;
+    margin: 0 10px;
+}
+.logo{
+    margin: 10px 0;
+}
+.logo .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.greenleaves {
+    width: 100%;
+    background-image: url("img/asset36.png");
+    
+}
+
+.greenleaves .container {
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 260px 0;
+}
+.greenleaves h1 {
+    font-size: 82px;
+    line-height: 1.2;
+    color: #333333;
+}
+
+.greenleaves h1 span {
+    color: #679509;
+}
+
+.greenleaves p {
+    color: #363636;
+    margin-top: 20px;
+    font-size: 30px;
+    line-height: 1.35;
+    font-family: Pacifico, handwriting;
+}
+.greenleaves button{
+    font-size: 14px;
+    font-weight: 700;
+    padding: 22px 42px;
+    margin-top: 10px;
+
+}
+.greenleaves button a{
+    display: block;
+}
+.healthyfarm{
+    text-align: center;
+}
