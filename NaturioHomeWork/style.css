@@ -38,6 +38,7 @@ button {
 
 .item-group {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .head {
@@ -133,4 +134,51 @@ button {
 }
 .healthyfarm{
     text-align: center;
+    margin: 100px 0;
 }
+.healthyfarm .main-title {
+    font-size: 48px;
+    FONT-FAMILY:Pacifico, handwriting;
+    color: #86ae34;
+    padding-bottom: 50px;
+}
+.healthyfarm .item-group h2 {
+    FONT-FAMILY:Pacifico, handwriting;
+    font-size: 20px;
+    color: #4f4f4f;
+}
+.healthyfarm .item-group p{
+    FONT-FAMILY:"PT Sans", sans-serif;
+    font-size: 16px;
+    color: #8b8b8b;
+}
+.healthyfarm .item-group .item{
+    width: 30%;
+    margin: 10px auto;
+}
+.TwoConnect .main-title{
+    display: flex;
+    margin: auto;
+}
+.TwoConnect .main-title img {
+    vertical-align: bottom;
+    position: relative;
+    
+}
+.TwoConnect .main-title .picleft{
+        position: relative;
+        border: black 2px solid;
+}
+.TwoConnect .main-title .picleft::before{
+    content: " ";
+    background-color: black;
+    position: absolute;
+    width: 98px;   
+    height: 98px;
+    border: 100px black solid;
+    top: 0;
+    left: 0;
+
+}
+
+
