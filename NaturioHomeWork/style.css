@@ -292,7 +292,7 @@ button {
 }
 .ColdCereal .item-group .item{
     width: calc(100% / 3);
-    padding: 20px 40px;
+    padding: 20px 160px;
     box-sizing: border-box;
 }
 .ColdCereal .item-group .item h1 {
