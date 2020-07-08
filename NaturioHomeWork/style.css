@@ -33,6 +33,7 @@ button {
     max-width: 100%;
     padding: 0 20px;
     margin: 0 101.5px;
+    box-sizing: border-box;
     
 }
 
@@ -48,8 +49,6 @@ button {
 }
 
 .head .container {
-
-    
     display: flex;
     justify-content: space-between;
 
@@ -100,10 +99,10 @@ button {
 }
 
 .greenleaves .container {
-    width: 100%;
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 260px 20px;
+    padding: 260px 0;
+    box-sizing: border-box;
 }
 .greenleaves h1 {
     font-size: 82px;
@@ -194,7 +193,7 @@ button {
     padding-bottom: 260px;
     background-repeat: no-repeat;
     text-align: center;
-    background-position: 0 70px;
+    background-position: center center;
 
 }
 .FruitsAndVegetables h1{
@@ -210,7 +209,82 @@ button {
     font-weight:400;
     color: #363636;
 }
+.FruitsAndVegetables button{
+    height: 58px;
+    width: 156.016px;
+    border: 0px solid  #FFFFFF;
+    font-family: "PT Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 900;
+}
+.VegeHeart .container{
+    display: flex;
+    width: 100%;
+    padding: 0 10px;
+    margin: 0;
 
+}
+.VegeHeart .item-group{
+    display: inline-block;
+    padding: 0 20px;
+}
+.VegeHeart .container h1 {
+    font-family: Pacifico, handwriting;
+    font-size: 20px;
+    color: #000;
+}
+.VegeHeart .container p{
+    font-family: "PT Sans", sans-serif;
+    font-size: 16px;
+    color:  #8B8B8B;
+    margin-top: 13px;
+}
+.VegeHeart .container h1:nth-child(3){
+    margin-top: 16px;
+}
+.VegeHeart .container h1:nth-child(5){
+    margin-top: 32px;
+}
+.Blog .container {
+    background-image:url(img/asset38.png);
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    padding: 163px 0 210px 0;
+}
+.Blog .container button{
+    display: block;
+    margin: 10px auto;
+    font-family: "PT Sans", sans-serif;
+    font-size: 12px;
+    line-height: 21px;
+    padding: 2px 9px 2px 9px;
+}
+.Blog .container .item-group{
+    justify-content: center;
+    margin-top: 20px;
+}
+.Blog .container .item{
+    margin: 0 20px;
+}
+.Blog .container h1{
+    font-family: Pacifico, handwriting;
+    font-size: 32px;
+    color: #333333;
+}
+.Blog .container p{
+    font-family: "PT Sans", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color:  #4F4F4F;
+}
+.Blog .container p:last-child{
+    font-family: "PT Sans", sans-serif;
+    font-size: 12px;
+    line-height: 21px;
+    color:  #A5A5A5;
+}
 
 
 
