@@ -30,7 +30,7 @@ button {
 
 .container {
     margin: auto;
-    max-width: 1220px;
+    max-width: 100%;
     padding: 0 20px;
     margin: 0 101.5px;
     
@@ -103,7 +103,7 @@ button {
     width: 100%;
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 260px 0;
+    padding: 260px 20px;
 }
 .greenleaves h1 {
     font-size: 82px;
@@ -158,27 +158,59 @@ button {
 }
 .TwoConnect .main-title{
     display: flex;
-    margin: auto;
+    justify-content: center;
 }
-.TwoConnect .main-title img {
+.TwoConnect .main-title img{
     vertical-align: bottom;
-    position: relative;
-    
 }
-.TwoConnect .main-title .picleft{
-        position: relative;
-        border: black 2px solid;
+.OurProducts{
+    text-align: center;
+    padding-top: 100px;
+    color: black;
 }
-.TwoConnect .main-title .picleft::before{
-    content: " ";
-    background-color: black;
-    position: absolute;
-    width: 98px;   
-    height: 98px;
-    border: 100px black solid;
-    top: 0;
-    left: 0;
+.OurProducts .menu{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.OurProducts .menu :first-child{
+    color: #86ae34;
+}
+.OurProducts .main-title h1{
+    width: 100%;
+    FONT-FAMILY:Pacifico, handwriting;
+    font-size: 32px;
+    color: #4f4f4f;
+}
+.OurProducts .main-title p{
+    padding: 10px 15px;
+}
+.OurProducts .item {
+    width: 25%;
+}
+.FruitsAndVegetables{
+    background-image: url(img/asset37.png);
+    padding-top: 260px;
+    padding-bottom: 260px;
+    background-repeat: no-repeat;
+    text-align: center;
+    background-position: 0 70px;
 
 }
+.FruitsAndVegetables h1{
+    FONT-FAMILY:"PT Sans", sans-serif;
+    FONT-SIZE:82px;
+    color: #363636;
+    font-weight:900;
+}
+.FruitsAndVegetables p{
+    font-family:Pacifico, handwriting;
+    font-size:30px;
+    font-style:normal;
+    font-weight:400;
+    color: #363636;
+}
+
+
 
 
