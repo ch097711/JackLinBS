@@ -1,421 +1,415 @@
 * {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    text-decoration: none;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
 }
 a {
-    color: #f0f0f0;
+  color: #f0f0f0;
 }
 
 body {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.7;
-    font-family: 'PT Sans', sans-serif;
-    letter-spacing: 0em;
-    text-align: left;
-    color: #a5a5a5;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  font-family: "PT Sans", sans-serif;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #a5a5a5;
 }
 button {
-    position: relative;
-    text-decoration: none;
-    background-color: #86ae34;
-    color: #fff;
-    border: none;
-    outline: none;
-    cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  background-color: #86ae34;
+  color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 
 .container {
-    margin: auto;
-    max-width: 100%;
-    padding: 0 20px;
-    margin: 0 101.5px;
-    box-sizing: border-box;
-    
+  margin: auto;
+  max-width: 100%;
+  padding: 0 20px;
+  margin: 0 101.5px;
+  box-sizing: border-box;
 }
 
 .item-group {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .head {
-    background-color: #679509;
-    padding-top: 6px;
-    padding-bottom: 6px;
+  background-color: #679509;
+  padding-top: 6px;
+  padding-bottom: 6px;
 }
 
 .head .container {
-    display: flex;
-    justify-content: space-between;
-
+  display: flex;
+  justify-content: space-between;
 }
-.head .container p{
-    padding: 5px 0;
+.head .container p {
+  padding: 5px 0;
 }
 
 .head .main-title {
-    padding: 5px 0;
-    font-size: 14px;
-    letter-spacing: 0.02em;
-    color: #ffffff;
+  padding: 5px 0;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  color: #ffffff;
 }
 
 .head .item-group {
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 0 10px;
-    
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
 }
-.head .item-group .item{
-
-    font-size: 12px;
-    color: white;
-    border-right:white 1px solid ;
-    padding: 0 17px;;
+.head .item-group .item {
+  font-size: 12px;
+  color: white;
+  border-right: white 1px solid;
+  padding: 0 17px;
 }
-.logo .item-group a{
-    color: #a5a5a5;
-    font-size: 14px;
-    margin: 0 10px;
+.logo .item-group a {
+  color: #a5a5a5;
+  font-size: 14px;
+  margin: 0 10px;
 }
-.logo{
-    margin: 10px 0;
+.logo {
+  margin: 10px 0;
 }
-.logo .container{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
+.logo .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .greenleaves {
-    width: 100%;
-    background-image: url("img/asset36.png");
-    
+  width: 100%;
+  background-image: url("img/asset36.png");
 }
 
 .greenleaves .container {
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 260px 0;
-    box-sizing: border-box;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 260px 0;
+  box-sizing: border-box;
 }
 .greenleaves h1 {
-    font-size: 82px;
-    line-height: 1.2;
-    color: #333333;
+  font-size: 82px;
+  line-height: 1.2;
+  color: #333333;
 }
 
 .greenleaves h1 span {
-    color: #679509;
+  color: #679509;
 }
 
 .greenleaves p {
-    color: #363636;
-    margin-top: 20px;
-    font-size: 30px;
-    line-height: 1.35;
-    font-family: Pacifico, handwriting;
+  color: #363636;
+  margin-top: 20px;
+  font-size: 30px;
+  line-height: 1.35;
+  font-family: Pacifico, handwriting;
 }
-.greenleaves button{
-    font-size: 14px;
-    font-weight: 700;
-    padding: 22px 42px;
-    margin-top: 10px;
-
+.greenleaves button {
+  font-size: 14px;
+  font-weight: 700;
+  padding: 22px 42px;
+  margin-top: 10px;
 }
-.greenleaves button a{
-    display: block;
+.greenleaves button a {
+  display: block;
 }
-.healthyfarm{
-    text-align: center;
-    margin: 100px 0;
+.healthyfarm {
+  text-align: center;
+  margin: 100px 0;
 }
 .healthyfarm .main-title {
-    font-size: 48px;
-    FONT-FAMILY:Pacifico, handwriting;
-    color: #86ae34;
-    padding-bottom: 50px;
+  font-size: 48px;
+  font-family: Pacifico, handwriting;
+  color: #86ae34;
+  padding-bottom: 50px;
 }
 .healthyfarm .item-group h2 {
-    FONT-FAMILY:Pacifico, handwriting;
-    font-size: 20px;
-    color: #4f4f4f;
+  font-family: Pacifico, handwriting;
+  font-size: 20px;
+  color: #4f4f4f;
 }
-.healthyfarm .item-group p{
-    FONT-FAMILY:"PT Sans", sans-serif;
-    font-size: 16px;
-    color: #8b8b8b;
+.healthyfarm .item-group p {
+  font-family: "PT Sans", sans-serif;
+  font-size: 16px;
+  color: #8b8b8b;
 }
-.healthyfarm .item-group .item{
-    width: 30%;
-    margin: 10px auto;
+.healthyfarm .item-group .item {
+  width: 30%;
+  margin: 10px auto;
 }
-.TwoConnect .main-title{
-    display: flex;
-    justify-content: center;
+.TwoConnect .main-title {
+  display: flex;
+  justify-content: center;
 }
-.TwoConnect .main-title img{
-    vertical-align: bottom;
+.TwoConnect .main-title img {
+  vertical-align: bottom;
 }
-.OurProducts{
-    text-align: center;
-    padding-top: 100px;
-    color: black;
+.OurProducts {
+  text-align: center;
+  padding-top: 100px;
+  color: black;
 }
-.OurProducts .menu{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.OurProducts .menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
-.OurProducts .menu :first-child{
-    color: #86ae34;
+.OurProducts .menu :first-child {
+  color: #86ae34;
 }
-.OurProducts .main-title h1{
-    width: 100%;
-    FONT-FAMILY:Pacifico, handwriting;
-    font-size: 32px;
-    color: #4f4f4f;
+.OurProducts .main-title h1 {
+  width: 100%;
+  font-family: Pacifico, handwriting;
+  font-size: 32px;
+  color: #4f4f4f;
 }
-.OurProducts .main-title p{
-    padding: 10px 15px;
+.OurProducts .main-title p {
+  padding: 10px 15px;
 }
 .OurProducts .item {
-    width: 25%;
+  width: 25%;
 }
-.FruitsAndVegetables{
-    background-image: url(img/asset37.png);
-    padding-top: 260px;
-    padding-bottom: 260px;
-    background-repeat: no-repeat;
-    text-align: center;
-    background-position: center center;
-
+.FruitsAndVegetables {
+  background-image: url(img/asset37.png);
+  padding-top: 260px;
+  padding-bottom: 260px;
+  background-repeat: no-repeat;
+  text-align: center;
+  background-position: center center;
 }
-.FruitsAndVegetables h1{
-    FONT-FAMILY:"PT Sans", sans-serif;
-    FONT-SIZE:82px;
-    color: #363636;
-    font-weight:900;
+.FruitsAndVegetables h1 {
+  font-family: "PT Sans", sans-serif;
+  font-size: 82px;
+  color: #363636;
+  font-weight: 900;
 }
-.FruitsAndVegetables p{
-    font-family:Pacifico, handwriting;
-    font-size:30px;
-    font-style:normal;
-    font-weight:400;
-    color: #363636;
+.FruitsAndVegetables p {
+  font-family: Pacifico, handwriting;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  color: #363636;
 }
-.FruitsAndVegetables button{
-    height: 58px;
-    width: 156.016px;
-    border: 0px solid  #FFFFFF;
-    font-family: "PT Sans", sans-serif;
-    font-size: 14px;
-    font-weight: 900;
+.FruitsAndVegetables button {
+  height: 58px;
+  width: 156.016px;
+  border: 0px solid #ffffff;
+  font-family: "PT Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 900;
 }
-.VegeHeart .container{
-    display: flex;
-    width: 100%;
-    padding: 0 10px;
-    margin: 0;
-
+.VegeHeart .container {
+  display: flex;
+  width: 100%;
+  padding: 0 10px;
+  margin: 0;
 }
-.VegeHeart .item-group{
-    display: inline-block;
-    padding: 0 20px;
+.VegeHeart .item-group {
+  display: inline-block;
+  padding: 0 20px;
 }
 .VegeHeart .container h1 {
-    font-family: Pacifico, handwriting;
-    font-size: 20px;
-    color: #000;
+  font-family: Pacifico, handwriting;
+  font-size: 20px;
+  color: #000;
 }
-.VegeHeart .container p{
-    font-family: "PT Sans", sans-serif;
-    font-size: 16px;
-    color:  #8B8B8B;
-    margin-top: 13px;
+.VegeHeart .container p {
+  font-family: "PT Sans", sans-serif;
+  font-size: 16px;
+  color: #8b8b8b;
+  margin-top: 13px;
 }
-.VegeHeart .container h1:nth-child(3){
-    margin-top: 16px;
+.VegeHeart .container h1:nth-child(3) {
+  margin-top: 16px;
 }
-.VegeHeart .container h1:nth-child(5){
-    margin-top: 32px;
+.VegeHeart .container h1:nth-child(5) {
+  margin-top: 32px;
 }
 .Blog .container {
-    background-image:url(img/asset38.png);
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    padding: 163px 0 210px 0;
-    background-repeat: no-repeat;
+  background-image: url(img/asset38.png);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  padding: 163px 0 210px 0;
+  background-repeat: no-repeat;
 }
-.Blog .container button{
-    display: block;
-    margin: 10px auto;
-    font-family: "PT Sans", sans-serif;
-    font-size: 12px;
-    line-height: 21px;
-    padding: 2px 9px 2px 9px;
+.Blog .container button {
+  display: block;
+  margin: 10px auto;
+  font-family: "PT Sans", sans-serif;
+  font-size: 12px;
+  line-height: 21px;
+  padding: 2px 9px 2px 9px;
 }
-.Blog .container .item-group{
-    justify-content: center;
-    margin-top: 20px;
+.Blog .container .item-group {
+  justify-content: center;
+  margin-top: 20px;
 }
-.Blog .container .item{
-    margin: 20px 50px;
+.Blog .container .item {
+  margin: 20px 50px;
 }
-.Blog .container h1{
-    font-family: Pacifico, handwriting;
-    font-size: 32px;
-    color: #333333;
+.Blog .container h1 {
+  font-family: Pacifico, handwriting;
+  font-size: 32px;
+  color: #333333;
 }
-.Blog .container p{
-    font-family: "PT Sans", sans-serif;
-    font-size: 18px;
-    font-weight: 600;
-    color:  #4F4F4F;
-    margin: 10px 0;
+.Blog .container p {
+  font-family: "PT Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #4f4f4f;
+  margin: 10px 0;
 }
-.Blog .container p:last-child{
-    font-family: "PT Sans", sans-serif;
-    font-size: 12px;
-    line-height: 21px;
-    color:  #A5A5A5;
+.Blog .container p:last-child {
+  font-family: "PT Sans", sans-serif;
+  font-size: 12px;
+  line-height: 21px;
+  color: #a5a5a5;
 }
-.ColdCereal .item-group{
-    justify-content: center;
+.ColdCereal .item-group {
+  justify-content: center;
+  max-width: 1200px;
+  margin: auto;
 }
-.ColdCereal .item-group .item{
-    width: calc(100% / 3);
-    padding: 20px 160px;
-    box-sizing: border-box;
+.ColdCereal .item-group .item {
+  width: calc(100% / 3);
+  max-width: 360px;
+  padding: 20px 0;
+  box-sizing: border-box;
+  text-align: center;
 }
 .ColdCereal .item-group .item h1 {
-    margin-bottom: 30px;
-    font-family: Pacifico, handwriting;
-    font-size: 32px;
-    color:  #4F4F4F;
+  margin-bottom: 30px;
+  font-family: Pacifico, handwriting;
+  font-size: 32px;
+  color: #4f4f4f;
 }
-.ColdCereal .item-group .item p:first-child{
-    font-family: "PT Sans", sans-serif;
-    font-size: 16px;
-    color:  #A5A5A5;
+.ColdCereal .item-group .item p:first-child {
+  font-family: "PT Sans", sans-serif;
+  font-size: 16px;
+  color: #a5a5a5;
 }
-.ColdCereal .item-group .item p:nth-child(2){
-    font-family: "PT Sans", sans-serif;
-    font-size: 14px;
-    color:  #333333;
+.ColdCereal .item-group .item p:nth-child(2) {
+  font-family: "PT Sans", sans-serif;
+  font-size: 14px;
+  color: #333333;
 }
-.ColdCereal .item-group .item p:last-child{
-    font-family: "PT Sans", sans-serif;
-    font-size: 20px;
-    font-weight: 900;
-    line-height: 26px;
-    color:  #86AE34;
+.ColdCereal .item-group .item p:last-child {
+  font-family: "PT Sans", sans-serif;
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 26px;
+  color: #86ae34;
 }
-.Client{
-    background-image: url(img/asset39.png);
-    width: 100%;
-    padding: 150px 0;
-    background-position: center center;
+.Client {
+  background-image: url(img/asset39.png);
+  width: 100%;
+  padding: 150px 0;
+  background-position: center center;
 }
 .Client .item {
-    padding: 20px 0;
+  padding: 20px 0;
 }
-.Client .item-group{
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.Client .item-group {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-.Client h1{
-    font-family: Pacifico, handwriting;
-    font-size: 32px;
-    line-height: 43.008px;
-    color:  #FFFFFF;
+.Client h1 {
+  font-family: Pacifico, handwriting;
+  font-size: 32px;
+  line-height: 43.008px;
+  color: #ffffff;
 }
 .Client img {
-    border-radius: 50%;
+  border-radius: 50%;
 }
 .Client p {
-    margin: auto;
-    width: 50%;
-    font-family: "PT Sans", sans-serif;
-    font-size: 16px;
-    line-height: 27.2px;
-    color:  #FFFFFF;
+  margin: auto;
+  width: 50%;
+  font-family: "PT Sans", sans-serif;
+  font-size: 16px;
+  line-height: 27.2px;
+  color: #ffffff;
 }
-.Client p:nth-child(3){
-    font-family: "PT Sans", sans-serif;
-    font-size: 16px;
-    font-weight: 900;
+.Client p:nth-child(3) {
+  font-family: "PT Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 900;
 }
-.Subscribe .main-title{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.Subscribe .main-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.Subscribe .main-title h1{
-    font-family: Pacifico, handwriting;
-    font-size: 32px;
-    line-height: 43.008px;
-    color:  #505050;
-    margin: 30px 0;
+.Subscribe .main-title h1 {
+  font-family: Pacifico, handwriting;
+  font-size: 32px;
+  line-height: 43.008px;
+  color: #505050;
+  margin: 30px 0;
 }
-.Subscribe .main-title input{
-    font-family: "PT Sans", sans-serif;
-    font-size: 16px;
-    line-height: 24px;
-    color:  #79787F;
-    height: 45px;
-    width: 415.344px;
-    border: 1px solid  #E3E3E3;
-    padding: 10px 20px 10px 20px;
-    min-height: 45px;
-    max-width: 100%;
-    min-width: 50px;
-    box-sizing: border-box;
+.Subscribe .main-title input {
+  font-family: "PT Sans", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  color: #79787f;
+  height: 45px;
+  width: 415.344px;
+  border: 1px solid #e3e3e3;
+  padding: 10px 20px 10px 20px;
+  min-height: 45px;
+  max-width: 100%;
+  min-width: 50px;
+  box-sizing: border-box;
 }
-.Subscribe .main-title button{
-    font-family: "PT Sans", sans-serif;
-    font-size: 16px;
-    line-height: 16px;
-    background-color:  #86AE34;
-    color:  #FFFFFF;
-    padding: 14px 3px 14px 3px;
-    height: 44px;
-    width: 137.063px;
-    margin: 5px 7px 5px 7px;
+.Subscribe .main-title button {
+  font-family: "PT Sans", sans-serif;
+  font-size: 16px;
+  line-height: 16px;
+  background-color: #86ae34;
+  color: #ffffff;
+  padding: 14px 3px 14px 3px;
+  height: 44px;
+  width: 137.063px;
+  margin: 5px 7px 5px 7px;
 }
-.Footer{
-    background-image: url(img/asset41.png);
-    width: 100%;
-    padding: 100px 0;
+.Footer {
+  background-image: url(img/asset41.png);
+  width: 100%;
+  padding: 100px 0;
 }
-.Footer .item-group{
-    justify-content: center;
-
+.Footer .item-group {
+  justify-content: center;
 }
-.Footer .item-group .item{
-    margin: 0 70px;
+.Footer .item-group .item {
+  margin: 0 40px;
 }
-.Footer .item-group .item h1{
-    font-family: Pacifico, handwriting;
-    font-size: 20px;
-    letter-spacing: 0.4px;
-    line-height: 29px;
-    color:  #4F4F4F;
-    margin: 0 0 15px 0;
+.Footer .item-group .item h1 {
+  font-family: Pacifico, handwriting;
+  font-size: 20px;
+  letter-spacing: 0.4px;
+  line-height: 29px;
+  color: #4f4f4f;
+  margin: 0 0 15px 0;
 }
-.Footer .item-group .item p{
-    font-family: "PT Sans", sans-serif;
-    font-size: 16px;
-    line-height: 27.2px;
-    color: #79787f;
+.Footer .item-group .item p {
+  font-family: "PT Sans", sans-serif;
+  font-size: 16px;
+  line-height: 27.2px;
+  color: #79787f;
 }
