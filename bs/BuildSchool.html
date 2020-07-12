@@ -7,29 +7,70 @@
     <title>Document</title>
     <link rel="stylesheet" href="owlcarousel/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="owlcarousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="reset.css">
     <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
 
+        .owl-prev {
+            width: 150px;
+            position: absolute;
+            top: 40%;
+            display: block !important;
+            border: 0px solid black;
+        }
 
+        .owl-next {
+            width: 150px;
+            position: absolute;
+            top: 40%;
+            right: 0px;
+            display: block !important;
+            border: 0px solid black;
+            transform: scale(-1, 1);
+        }
 
-
+        .owl-item {}
     </style>
 </head>
 
 <body>
-    <div class="owl-carousel">
-        <div> Your Content </div>
-        <div> Your Content </div>
-        <div> Your Content </div>
-        <div> Your Content </div>
-        <div> Your Content </div>
-        <div> Your Content </div>
-        <div> Your Content </div>
+    <div class="owl-carousel owl-theme">
+        <div> <img src="img/asset 1.webp" alt=""> </div>
+        <div> <img src="img/asset 33.webp" alt=""> </div>
+        <div> <img src="img/asset 34.webp" alt=""> </div>
+        <div> <img src="img/asset 35.webp" alt=""> </div>
+        <div> <img src="img/asset 36.webp" alt=""> </div>
+        <div> <img src="img/asset 37.webp" alt=""> </div>
+        <div> <img src="img/asset 38.webp" alt=""> </div>
+        <div> <img src="img/asset 39.webp" alt=""> </div>
+        <div> <img src="img/asset 40.webp" alt=""> </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="owlcarousel/owl.carousel.min.js"></script>
     <script>
         $(document).ready(function () {
-            $(".owl-carousel").owlCarousel();
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                responsiveClass: true,
+                nav: true,
+                loop: true,
+                navText: ['<img src="img/asset 26.svg" alt="">', '<img src="img/asset 26.svg" alt="">'],
+                responsive: {
+                    0: {
+                        items: 1,
+                    },
+                    600: {
+                        items: 1,
+                    },
+                    1000: {
+                        items: 1,
+                    }
+                }
+            })
         });
     </script>
 </body>
