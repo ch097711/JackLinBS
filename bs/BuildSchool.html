@@ -15,22 +15,37 @@
             list-style: none;
         }
 
+        button span {
+            font-size: 10vmin;
+            color: rgba(204, 204, 204, 1);
+        }
+
+        button span:hover {
+            color: rgba(204, 204, 204, 0.726);
+        }
+
         .owl-prev {
-            width: 150px;
             position: absolute;
             top: 40%;
+            left: 5%;
             display: block !important;
             border: 0px solid black;
         }
 
         .owl-next {
-            width: 150px;
             position: absolute;
             top: 40%;
-            right: 0px;
+            right: 5%;
             display: block !important;
             border: 0px solid black;
-            transform: scale(-1, 1);
+        }
+
+        .owl-theme .owl-nav [class*='owl-']:hover {
+            background: none;
+        }
+
+        .owl-theme .owl-nav [class*='owl-']:focus {
+            outline: none;
         }
 
         .owl-dots {
@@ -68,7 +83,6 @@
                 responsiveClass: true,
                 nav: true,
                 loop: true,
-                navText: ['<img src="img/asset 26.svg" alt="">', '<img src="img/asset 26.svg" alt="">'],
                 responsive: {
                     0: {
                         items: 1,
