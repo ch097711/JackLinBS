@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hide {
+            display: none;
+        }
+
+        button {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button onclick="toggleMenu(1)">打開選單一</button>
+    <ul id="menu-1">
+        <li>在我版權所有，然而。</li>
+        <li>在我版權所有，然而。</li>
+        <li>在我版權所有，然而。</li>
+        <li><img src="https://fakeimg.pl/200x200"></li>
+    </ul>
+    <button onclick="toggleMenu(2)">打開選單二</button>
+    <ul id="menu-2">
+        <li>在我版權所有，然而。</li>
+        <li>在我版權所有，然而。</li>
+        <li>在我版權所有，然而。</li>
+    </ul>
+    <button onclick="toggleMenu(3)">打開選單三</button>
+    <ul id="menu-3">
+        <li>在我版權所有，然而。</li>
+        <li>在我版權所有，然而。</li>
+        <li>在我版權所有，然而。</li>
+    </ul>
+
+    <script>
+        function toggleMenu(number) {
+            var menu = document.getElementById(`menu-${number}`);
+            menu.classList.toggle("hide");
+        }
+        var name = "Kevin";
+        console.log("My name is %s", name);
+        console.log("My name is %c%s", "background:red; color:white", name); //%c : css ; %s : string 
+        console.warn("My name is %c%s", "background:red; color:white", name);
+
+        var PhoneNo = { Home: "366-4946", Mobile: "0922-155222" }
+        let employees = [
+            { id: 1, name: "Kevin", Email: "Kevin@gmail.com" },
+            { id: 2, name: "David", Email: "David@gmail.com" },
+            { id: 3, name: "Mary", Email: "Mary@gmail.com" }
+        ]
+        console.log(employees);
+        console.table(employees);
+    </script>
+</body>
+
+</html>

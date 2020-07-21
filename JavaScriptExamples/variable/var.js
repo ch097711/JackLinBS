@@ -1,8 +1,8 @@
 //Ex1
-var x = 1;
+var x = 1; //全域空間 全域變數
 var x;
 function init() {
-    var x = 0;
+    var x = 0; //區域空間 區域變數
     console.log(x);
 }
 init();//0

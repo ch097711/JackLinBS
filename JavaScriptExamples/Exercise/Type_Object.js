@@ -5,7 +5,7 @@ var person = {
     email: "ch097711@gmail.com",
     phone: "0912-345678"
 }
-console.log(`${person.name}  , ${person.email} , ${person.phone}`);
+console.log(`${person.name},${person.email},${person.phone}`);
 
 console.log(`${person["name"]}, ${person["email"]},${person["phone"]}`);
 
