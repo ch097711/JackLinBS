@@ -45,3 +45,21 @@ console.log(eval(s1));
 console.log(eval(s2));
 console.log(typeof eval(s2));
 console.log(eval(s2.valueOf()));
+
+var request = require("request");
+var cheerio = require("cheerio");
+request('http://news.shu.edu.cn/Default.aspx?tabid=446', function (err, result) {
+    if (err) {
+        console.log(err);
+    }
+    console.log(result.body);
+})
+request('http://news.shu.edu.cn/Default.aspx?tabid=446', function (err, result) {
+    if (err) {
+        console.log(err);
+    }
+    var $ = cheerio.load(result.body);
+    $('a[id^="dnn"]').each(function (index, element) {
+        console.log($(element).text());
+    })
+})
