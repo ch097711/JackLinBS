@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        table,
+        td {
+            border: 1px black solid;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <h1></h1>
+            <tr>
+                <td>國家</td>
+                <td>確診</td>
+                <td>死亡</td>
+                <td>治癒</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>台灣</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>中國</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>美國</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>全球統計</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <ul>
+        <li>JS</li>
+        <li>HTML</li>
+        <li>CSS</li>
+    </ul>
+    <script>
+        //建立Virus資料，傳入Table中
+        //全球肺炎統計表
+        let title = document.querySelector("h1");
+        title.innerText = "全球肺炎統計表";
+
+        let lang = document.querySelectorAll("ul li");
+        console.log(lang);
+    </script>
+</body>
+
+</html>

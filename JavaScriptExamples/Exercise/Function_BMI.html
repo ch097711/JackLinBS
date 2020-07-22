@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>身高</p>
+    <input type="text" id="height" name="height">
+    <p>體重</p>
+    <input type="text" id="weight" name="weight"><br>
+    <button onclick="calBMI()" id="cal">計算bmi</button>
+    <div id="ans"></div>
+
+    <script>
+        let calBMI = () => {
+            let height = document.getElementById("height").value;
+            let weight = document.getElementById("weight").value;
+            let BMI = weight / ((height / 100) ** 2);
+            document.getElementById("ans").innerHTML = `<b>${BMI}</b>`; //可以放標籤
+            // document.getElementById("ans").innerText = BMI;   //只能放text
+            // document.getElementById("ans").innerContent = BMI;
+            alert(BMI);
+        }
+    </script>
+</body>
+
+</html>
