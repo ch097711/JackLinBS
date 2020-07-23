@@ -22,19 +22,19 @@
             <td>死亡</td>
             <td>治癒</td>
         </tr>
-        <tr>
+        <tr id="taiwan">
             <td>台灣</td>
             <td></td>
             <td></td>
             <td></td>
         </tr>
-        <tr>
+        <tr id="china">
             <td>中國</td>
             <td></td>
             <td></td>
             <td></td>
         </tr>
-        <tr>
+        <tr id="usa">
             <td>美國</td>
             <td></td>
             <td></td>
@@ -50,15 +50,13 @@
     </table>
     <script>
         //建立Virus資料，傳入Table中
+        var Taiwan = [100, 200, 300];
+        var American = [300, 600, 900];
+        let China = [500, 800, 300];
+        document.querySelectorAll("#taiwan td").innerText = Taiwan;
         //全球肺炎統計表
         let title = document.querySelector("h1");
         title.innerText = "全球肺炎統計表";
-
-        function get() {
-            let url = `https://en.wikipedia.org/wiki/Template:COVID-19_pandemic_data`;
-            url.querySelectorAll('td');
-        }
-
     </script>
 </body>
 
