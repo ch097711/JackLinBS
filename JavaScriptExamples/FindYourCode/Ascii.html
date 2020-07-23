@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <input id="name" type="text" name="name">
+    <button onclick="fullCharCode()">Ascii</button>
+    <div></div>
+
+    <script>
+        function fullCharCode() {
+            var x = 0;
+            var arr = [];
+            var name = document.getElementById("name").value;
+            var reg = /^[\u4E00-\u9FA5]+$/;
+            if (reg.test(name)) {
+                for (let i = 0; i < 65536; i++) {
+                    if (String.fromCharCode(i) == name.charAt(x)) {
+                        arr[x] = i + `${name.charAt(x)}`;
+                        x++;
+                        i = 0;
+                        if (x == name.length) {
+                            document.querySelector("div").textContent = arr;
+                        }
+                    }
+                }
+            }
+            else {
+                document.querySelector("div").textContent = '輸入中文!';
+            }
+        }
+    </script>
+</body>
+
+</html>

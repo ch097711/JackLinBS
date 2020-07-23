@@ -48,11 +48,17 @@ console.log(eval(s2.valueOf()));
 
 var request = require("request");
 var cheerio = require("cheerio");
-request('http://news.shu.edu.cn/Default.aspx?tabid=446', function (err, result) {
+request('https://en.wikipedia.org/wiki/Template:COVID-19_pandemic_data', function (err, result) {
     if (err) {
         console.log(err);
     }
-    console.log(result.body);
+    // console.log(result);
+    const $ = cheerio.load(result);
+    // const result = [];
+    const table_tr = $("tbody tr td").text();
+    console.log(table_tr);
+
+
 })
 request('http://news.shu.edu.cn/Default.aspx?tabid=446', function (err, result) {
     if (err) {
