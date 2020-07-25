@@ -9,6 +9,15 @@
             border: 1px black solid;
             border-collapse: collapse;
             padding: 10px;
+            text-align: center;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        table {
+            margin: auto;
         }
     </style>
 </head>
@@ -40,8 +49,8 @@
             <td></td>
             <td></td>
         </tr>
-        <tr>
-            <td id="Total">總計</td>
+        <tr id="Total">
+            <td>總計</td>
             <td></td>
             <td></td>
             <td></td>
@@ -53,7 +62,7 @@
         let title = document.querySelector("h1");
         title.innerText = "全球肺炎統計表";
         //建立Virus資料，傳入Table中
-        var Country = ['Taiwan', 'China', 'Amecican']
+        var Country = ['Taiwan', 'China', 'American']
         var Taiwan = ['458', '400', '7'];
         var China = ['85,921', '80,519', '4653'];
         var American = ['4,106,615', '1,226,670', '146,419'];
@@ -62,13 +71,23 @@
         var TaiwanList = document.querySelectorAll("#Taiwan td");
         var ChinaList = document.querySelectorAll("#China td");
         var AmericanList = document.querySelectorAll("#American td");
-        for (var i = 0; i < 4; i++) {
-            var x = 1;
-            for (var a = 0; a < 4; a++) {
-                eval(`${Country[i]}List[x]`) = eval(`${Country[i]}[i]`);
-                x++;
+        var TotalList = document.querySelectorAll("#Total td");
+        for (var i = 0; i < 3; i++) {
+            var y = 0;
+            for (var x = 1; x < 4; x++) {
+                eval(`${Country[i]}List[x].textContent=${Country[i]}[y]`);
+                y++;
             }
         }
+        for (var i = 1, y = 0; i < 4; i++) {
+            var x = parseInt(Taiwan[y].replace(/,/g, '')) + parseInt(China[y].replace(/,/g, '')) + parseInt(American[y].replace(/,/g, ''));
+            TotalList[i].textContent = thousands(x);
+            y++;
+            function thousands(num) {
+                return num.toLocaleString();
+            }
+        };
+
 
     </script>
 </body>
