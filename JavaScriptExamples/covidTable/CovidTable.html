@@ -22,26 +22,26 @@
             <td>死亡</td>
             <td>治癒</td>
         </tr>
-        <tr id="taiwan">
+        <tr id="Taiwan">
             <td>台灣</td>
             <td></td>
             <td></td>
             <td></td>
         </tr>
-        <tr id="china">
+        <tr id="China">
             <td>中國</td>
             <td></td>
             <td></td>
             <td></td>
         </tr>
-        <tr id="usa">
+        <tr id="American">
             <td>美國</td>
             <td></td>
             <td></td>
             <td></td>
         </tr>
         <tr>
-            <td>全球統計</td>
+            <td id="Total">總計</td>
             <td></td>
             <td></td>
             <td></td>
@@ -49,14 +49,27 @@
 
     </table>
     <script>
-        //建立Virus資料，傳入Table中
-        var Taiwan = [100, 200, 300];
-        var American = [300, 600, 900];
-        let China = [500, 800, 300];
-        document.querySelectorAll("#taiwan td").innerText = Taiwan;
         //全球肺炎統計表
         let title = document.querySelector("h1");
         title.innerText = "全球肺炎統計表";
+        //建立Virus資料，傳入Table中
+        var Country = ['Taiwan', 'China', 'Amecican']
+        var Taiwan = ['458', '400', '7'];
+        var China = ['85,921', '80,519', '4653'];
+        var American = ['4,106,615', '1,226,670', '146,419'];
+        var Total = [];
+
+        var TaiwanList = document.querySelectorAll("#Taiwan td");
+        var ChinaList = document.querySelectorAll("#China td");
+        var AmericanList = document.querySelectorAll("#American td");
+        for (var i = 0; i < 4; i++) {
+            var x = 1;
+            for (var a = 0; a < 4; a++) {
+                eval(`${Country[i]}List[x]`) = eval(`${Country[i]}[i]`);
+                x++;
+            }
+        }
+
     </script>
 </body>
 
