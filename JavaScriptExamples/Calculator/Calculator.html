@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <style>
+        #showbox {
+            padding: 0.375rem 0.75rem;
+            font-size: 3rem;
+            line-height: 1.5;
+            overflow: hidden;
+        }
+
+        .btn:active {
+            background-color: rgba(0, 123, 255, 0.25) !important;
+            border-color: rgba(0, 123, 255, 0.25) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container justify-content-center">
+        <div class="row  justify-content-center">
+            <div class="col-4 text-right" id="showbox">0</div>
+        </div>
+        <div class="row mt-3  justify-content-center">
+            <div class="col-1"><input class="btn btn-primary w-100" onclick="number(1)" type="button" value="1">
+            </div>
+            <div class="col-1"><input class="btn btn-primary w-100" onclick="number(2)" type="button" value="2">
+            </div>
+            <div class="col-1"><input class="btn btn-primary w-100" onclick="number(3)" type="button" value="3">
+            </div>
+            <div class="col-1"><input class="btn btn-primary w-100" onclick="calc('+')" type="button" value="+"></div>
+        </div>
+        <div class="row mt-3  justify-content-center">
+            <div class="col-1"><input class="btn btn-primary w-100" onclick="number(4)" type="button" value="4">
+            </div>
+            <div class="col-1"><input class="btn btn-primary w-100" onclick="number(5)" type="button" value="5">
+            </div>
+            <div class="col-1"><input class="btn btn-primary w-100" onclick="number(6)" type="button" value="6">
+            </div>
+            <div class="col-1"><input class="btn btn-primary w-100" onclick="calc('-')" type="button" value="-"></div>
+        </div>
+        <div class="row mt-3  justify-content-center">
+            <div class="col-1"><input class="btn btn-primary w-100" onclick="number(7)" type="button" value="7">
+            </div>
+            <div class="col-1"><input class="btn btn-primary w-100" onclick="number(8)" type="button" value="8">
+            </div>
+            <div class="col-1"><input class="btn btn-primary w-100" onclick="number(9)" type="button" value="9">
+            </div>
+            <div class="col-1"><input class="btn btn-primary w-100" onclick="calc('*')" type="button" value="*"></div>
+        </div>
+        <div class="row mt-3  justify-content-center">
+            <div class="col-1"><input class="btn btn-primary w-100" onclick="clean()" type="button" value="C"></div>
+            <div class="col-1"><input class="btn btn-primary w-100" onclick="number(0)" type="button" value="0">
+            </div>
+            <div class="col-1"><input class="btn btn-primary w-100" onclick="ans()" type="button" value="="></div>
+            <div class="col-1"><input class="btn btn-primary w-100" onclick="calc('/')" type="button" value="/"></div>
+        </div>
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    <script>
+        var showbox = document.getElementById("showbox");
+        function number(x) {
+            if (showbox.textContent == '0') {
+                showbox.textContent = x;
+            }
+            else if (showbox.textContent.length > 12) {
+            }
+            else {
+                showbox.textContent = showbox.textContent + x;
+            }
+        };
+
+        // function clean() {
+        //     showbox.textContent = 0;
+        // };
+        var clean = () => showbox.textContent = 0;
+
+        function calc(y) {
+            if (showbox.textContent.charAt(showbox.textContent.length - 1) != y) {
+                showbox.textContent = showbox.textContent + y
+            }
+        }
+        function ans() {
+            showbox.textContent = eval(showbox.textContent);
+        }
+
+
+    </script>
+</body>
+
+</html>
