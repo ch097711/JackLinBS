@@ -116,9 +116,10 @@
             document.getElementById("show").innerHTML = document.getElementById("show").innerHTML + "<a href='#' onclick=back('" + showbox.textContent + "')>" + showbox.textContent + '=' + eval(showbox.textContent) + "</a>" + "<br>";
             showbox.textContent = eval(showbox.textContent);
         }
-        function back(x) {
-            showbox.textContent = x;
-        }
+        // function back(x) {
+        //     showbox.textContent = x;
+        // }
+        var back = x => showbox.textContent = x;
 
 
     </script>
