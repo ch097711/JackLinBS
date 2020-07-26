@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        p:active,
+        p.active {
+            background-color: red;
+        }
+    </style>
+
+<body>
+    <p>Welcome to Jdrop
+        Jdrop provides a place to store JSON data in the cloud. The initial application is for storing performance data
+        gathered from mobile devices. It's hard to analyze large amounts of information (HTTP waterfall charts, HTTP
+        headers, document source, etc.) on a mobile device. Jdrop lets you gather this data on the mobile device but
+        analyze it remotely on a larger screen. </p>
+</body>
+<script type="text/javascript">
+    document.addEventListener('touchstart', function (e) {
+        e.target.className = 'active';
+    }, false);
+    document.addEventListener('touchend', function (e) {
+        e.target.className = '';
+    }, false);
+</script>
+
+</html>

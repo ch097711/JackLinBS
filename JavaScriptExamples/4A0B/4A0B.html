@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>4digits</title>
+    <style>
+        .container {
+            margin-top: 10vh;
+        }
+
+        .list-group-item {
+            height: 3rem;
+            line-height: 1.5rem;
+            font-size: 1.5rem !important;
+        }
+
+        .btn-secondary {
+            width: calc(100% / 3);
+        }
+
+        #body {
+            font-size: 2.5rem !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container d-flex justify-content-center">
+        <div class="btn-group btn-group-lg col-10 " role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-secondary" onclick="random();startGame()">Start Game!</button>
+            <button type="button" class="btn btn-secondary" onclick="random();again()" disabled>Again</button>
+            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal"
+                onclick="showAnswer()" disabled>Answer</button>
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title " id="exampleModalLabel">Answer is !!!!!</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body text-center" id="body">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="container d-flex justify-content-center mt-2">
+        <div class="col-10">
+            <ul class="list-group text-center">
+                <li class="list-group-item" id="answer1"></li>
+                <li class="list-group-item" id="answer2"></li>
+                <li class="list-group-item" id="answer3"></li>
+                <li class="list-group-item" id="answer4"></li>
+                <li class="list-group-item" id="answer5"></li>
+                <li class="list-group-item" id="answer6"></li>
+                <li class="list-group-item" id="answer7"></li>
+                <li class="list-group-item" id="answer8"></li>
+            </ul>
+        </div>
+    </div>
+    <div class="container  d-flex justify-content-center mt-2">
+        <div class="col-10">
+            <div class="input-group mb-3 text-center">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Input:</span>
+                </div>
+
+                <input type="text" id="input" class="form-control" placeholder="1234" aria-label="Recipient's username"
+                    aria-describedby="button-addon2" oninput="value=value.replace(/[^\d]/g,'')" maxlength="4" disabled>
+
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon2" disabled>Guess!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    <script>
+        var randomList = [];
+        function random() {
+            var arr = [];
+            var json = {};
+            while (arr.length < 4) {
+                var k = Math.floor(Math.random() * 10);
+                if (!json[k]) {
+                    json[k] = true;
+                    arr.push(k);
+                };
+            };
+            randomList = arr;
+        };
+        var showAnswer = () => document.getElementById("body").textContent = randomList;
+        function startGame() {
+            document.getElementById("input").removeAttribute("disabled");
+            document.getElementById("input").focus();
+            for (var i = 0; i < document.getElementsByClassName("btn").length; i++) {
+                document.getElementsByClassName("btn")[i].removeAttribute("disabled");
+            }
+        }
+        document.getElementById("button-addon2").addEventListener("click", function () {
+            var inputNum = document.getElementById("input").value;
+            var a = 0;
+            var b = 0;
+            for (var i = 0; i < 4; i++) {
+                for (var q = 0; q < 4; q++) {
+                    if (inputNum[i] == randomList[q] && i == q) {
+                        a++;
+                    }
+                    else if (inputNum[i] == randomList[q] && i != q) {
+                        b++;
+                    }
+                }
+            }
+            for (var i = 8; i > 0; i--) {
+                if (i == 1 && a == 4) {
+                    document.getElementById("answer" + i).innerHTML = `${inputNum}:<span class="bg-success">${a}A${b}B</span>`;
+                    alert("YOU WIN !!!");
+                }
+                else if (i == 1) {
+                    document.getElementById("answer" + i).innerHTML = `${inputNum}:<span class="bg-danger">${a}A${b}B</span>`;
+                }
+                else if (document.getElementById("answer" + (i - 1)).innerText == null) {
+                }
+                else {
+                    document.getElementById("answer" + i).innerHTML = document.getElementById("answer" + (i - 1)).innerHTML;
+                }
+            }
+            document.getElementById("input").value = "";
+        })
+
+        function again() {
+            for (var x = 0; x < 8; x++)
+                document.getElementsByClassName("list-group-item")[x].innerHTML = "";
+        }
+
+
+    </script>
+</body>
+
+</html>
