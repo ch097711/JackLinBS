@@ -130,6 +130,7 @@
                 document.getElementsByClassName("btn")[i].removeAttribute("disabled");
             }
             document.querySelector(".btn").setAttribute("disabled", "");
+            document.getElementById("button-addon2").setAttribute("disabled", "");
         }
         document.getElementById("button-addon2").addEventListener("click", function () {
             var inputNum = document.getElementById("input").value;
@@ -169,6 +170,14 @@
             }
             document.getElementById("input").focus();
         }
+        document.getElementById("input").addEventListener("input", function () {
+            if (document.getElementById("input").value.length == 4) {
+                document.getElementById("button-addon2").removeAttribute("disabled");
+            }
+            else {
+                document.getElementById("button-addon2").setAttribute("disabled", "");
+            }
+        })
 
 
     </script>
