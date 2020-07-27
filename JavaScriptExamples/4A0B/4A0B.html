@@ -162,6 +162,7 @@
             }
             document.getElementById("input").value = "";
             document.getElementById("input").focus();
+            document.getElementById("button-addon2").setAttribute("disabled", "");
         })
 
         function again() {
@@ -170,6 +171,7 @@
             }
             document.getElementById("input").focus();
         }
+
         document.getElementById("input").addEventListener("input", function () {
             if (document.getElementById("input").value.length == 4) {
                 document.getElementById("button-addon2").removeAttribute("disabled");
