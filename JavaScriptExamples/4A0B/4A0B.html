@@ -104,6 +104,7 @@
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
     <script>
+
         var randomList = [];
         function random() {
             var arr = [];
@@ -117,13 +118,18 @@
             };
             randomList = arr;
         };
+
+
         var showAnswer = () => document.getElementById("body").textContent = randomList;
+
+
         function startGame() {
             document.getElementById("input").removeAttribute("disabled");
             document.getElementById("input").focus();
             for (var i = 0; i < document.getElementsByClassName("btn").length; i++) {
                 document.getElementsByClassName("btn")[i].removeAttribute("disabled");
             }
+            document.querySelector(".btn").setAttribute("disabled", "");
         }
         document.getElementById("button-addon2").addEventListener("click", function () {
             var inputNum = document.getElementById("input").value;
@@ -154,11 +160,14 @@
                 }
             }
             document.getElementById("input").value = "";
+            document.getElementById("input").focus();
         })
 
         function again() {
-            for (var x = 0; x < 8; x++)
+            for (var x = 0; x < 8; x++) {
                 document.getElementsByClassName("list-group-item")[x].innerHTML = "";
+            }
+            document.getElementById("input").focus();
         }
 
 
