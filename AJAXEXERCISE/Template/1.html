@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="test1"></div><br>
+    <input type="button" onclick="innerTest()" value="testInnerHTML">
+    <div id="test2"></div><br>
+    <input type="button" onclick="appendTest()" value="testAppendChild">
+
+    <script type="text/javascript">
+        function innerTest() {
+            var t1 = (new Date()).getTime();
+            var a = "<b>apple</b>";
+            var b = document.getElementById("test1");
+            for (var i = 0; i < 500; i++) {
+                b.innerHTML += a;
+            }
+            var t2 = (new Date()).getTime();
+            console.log("testInnerHTML:" + (t2 - t1));
+        }
+
+        function appendTest() {
+            var t1 = (new Date()).getTime();
+            var b = document.getElementById("test2");
+            for (var i = 0; i < 500; i++) {
+                var a = document.createElement("b");
+                a.appendChild(document.createTextNode("apple"));
+                b.appendChild(a);
+            }
+            var t2 = (new Date()).getTime();
+            console.log("testAppendChild:" + (t2 - t1));
+        }
+    </script>
+</body>
+
+</html>
