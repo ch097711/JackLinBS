@@ -24,7 +24,7 @@
 
         function fetchResource() {
             url = $g("#url").value;
-            console.log("second times input tag選取 :" + $g("input").value);
+            console.dir($g("input"));
             console.log("id選取 :" + url);
             fetch(url)
                 .then(response => response.text())
