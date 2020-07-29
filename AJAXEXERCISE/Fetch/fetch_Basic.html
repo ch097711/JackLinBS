@@ -11,25 +11,20 @@
     <input type="text" id="url" size="120" value="https://www.msn.com/zh-tw/">
     <button>Fetch</button>
     <div></div>
-
-
-
-
-
     <script type="module">
         import { $g } from "../Modules/helpers.js";
 
         let url = "https://www.msn.com/zh-tw/";
         window.onload = function () {
             // $g("input").value = url;
-            console.log("first class 選取 :" + $g("input").value);
+            console.log("first times input tag選取 :" + $g("input").value);
             $g("button").addEventListener("click", fetchResource);
         }
 
 
         function fetchResource() {
             url = $g("#url").value;
-            console.log("second class 選取 :" + $g("input").value);
+            console.log("second times input tag選取 :" + $g("input").value);
             console.log("id選取 :" + url);
             fetch(url)
                 .then(response => response.text())
