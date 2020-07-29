@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="url" size="120">
+    <button>Fetch</button>
+    <div id="msg"></div>
+
+    <script type="module">
+        import { $g } from "../Modules/helpers.js";
+
+
+
+        let url = "https://raw.githubusercontent.com/ch097711/FileStorge/master/iPad.json";
+        window.onload = function () {
+            $g("input").value = url;
+            $g("button").addEventListener("click", ajaxCall);
+        }
+        function ajaxCall() {
+            let xhr = new XMLHttpRequest();
+            let promise1 = new Promise(function (reslove, reject) {
+                xhr.onload = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        reslove(xhr.responseText);
+                    }
+                    else {
+                        let error = "錯誤代碼 :" + xhr.status;
+                        reject(error);
+                    }
+                }
+                xhr.open('GET', url)
+                xhr.send();
+            });
+
+
+            promise1.then(
+                function (json) {
+                    msg.innerText = json;
+                }, function (ex) {
+                    msg.innerText = ex;
+                }
+            );
+        }
+
+
+
+
+    </script>
+
+</body>
+
+</html>

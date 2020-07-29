@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="url" size="120">
+    <button>Fetch</button>
+
+
+
+
+
+    <script type="module">
+        import { $g } from "../Modules/helpers.js";
+
+        let url = "https://www.msn.com/zh-tw/";
+        window.onload = function () {
+            $g("input").value = url;
+            $g("button").addEventListener("click", fetchResource);
+        }
+        function fetchResource() {
+            // let url = $g("input").value;
+            fetch(url)
+                .then(response => response.text())
+                .then(text => {
+                    //成功...
+                    $g("body").innerHTML = text;
+                })
+                .catch(ex => {
+                    //失敗
+                    $g("body").innerHTML = ex;
+                });
+
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

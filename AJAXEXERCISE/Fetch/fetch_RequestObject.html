@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="url" size="120">
+    <button>Fetch</button>
+    <div id="msg"></div>
+
+
+    <script type="module">
+        import { $g } from "../Modules/helpers.js";
+
+        let url = "https://raw.githubusercontent.com/ch097711/FileStorge/master/iPad.json";
+        window.onload = function () {
+            $g("input").value = url;
+            $g("button").addEventListener("click", fetchResourcePost);
+        }
+        function fetchResourceGet() {
+            const request = new Request(url);
+            fetch(request)
+                .then(response => response.text())
+                .then(text => {
+                    $g("#msg").innerText = text;
+                })
+                .catch(ex => {
+                    $g("#msg").innerText = ex;
+                });
+        }
+
+
+        function fetchResourcePost() {
+            let request = new Request(url, {
+                method: "POST",
+                body: '{"name":"jack","email":"ch097711"}'
+            });
+            fetch(request)
+                .then(response => {
+                    response.text();
+                    let text = response.text();
+                    const url = request.url;
+                    const method = request.method;
+                    const bodyUsed = request.bodyUsed;
+
+                })
+                .then(text => {
+                    $g("#msg").innerText = text;
+                })
+                .catch(ex => {
+                    $g("#msg").innerText = ex;
+                });
+
+
+
+        }
+
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>
