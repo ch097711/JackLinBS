@@ -111,12 +111,13 @@
         const url = "https://raw.githubusercontent.com/ch097711/FileStorge/master/pizza.json"
         xhr.onload = function () {
             var pizzaList = JSON.parse(this.responseText);
+            console.log(pizzaList);
             for (var i = 0; i < pizzaList.length; i++) {
-                debugger;
+                // debugger;
                 var titleArray = Object.keys(pizzaList[i]);
                 const dataArray = Object.values(pizzaList[i]);
-                console.table(titleArray);
-                console.table(dataArray);
+                // console.table(titleArray);
+                // console.table(dataArray);
                 let row = $g('.row');
 
                 let card = $g('#cardPizza');

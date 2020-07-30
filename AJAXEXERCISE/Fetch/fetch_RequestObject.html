@@ -19,7 +19,7 @@
         let url = "https://raw.githubusercontent.com/ch097711/FileStorge/master/iPad.json";
         window.onload = function () {
             $g("input").value = url;
-            $g("button").addEventListener("click", fetchResourcePost);
+            $g("button").addEventListener("click", fetchResourceGet);
         }
         function fetchResourceGet() {
             const request = new Request(url);
