@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font: 14px sans-serif;
+        }
+
+        input {
+            margin: 0.6em 0.6em 0;
+            width: 398px;
+        }
+
+        #map {
+            height: 400px;
+            width: 100%;
+            margin: 0.6em;
+        }
+    </style>
+</head>
+
+<body>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlKWP4uWjQIR3WDAWLAu6rUhBfc3_ppag&callback=initMap&libraries=places&v=weekly"
+        defer></script>
+    <div id="map"></div>
+    <div class="photos-section" id="img-container"></div>
+    <script>
+        function initMap() {
+
+            var map = new google.maps.Map(document.getElementById('map'));
+
+            var request = {
+                placeId: 'ChIJN1t_tDeuEmsRUsoyG83frY4'
+            };
+
+            service = new google.maps.places.PlacesService(map);
+            service.getDetails(request, callback);
+
+            function callback(place, status) {
+                if (status == google.maps.places.PlacesServiceStatus.OK) {
+                    createPhoto(place);
+                }
+            }
+
+            function createPhoto(place) {
+                var photos = place.photos;
+
+                if (!photos) {
+                    return;
+                }
+                var img = document.createElement("img")
+
+                for (var i = 0; i < photos.length; i++) {
+                    img.src = photos[i].getUrl({
+                        maxWidth: 100,
+                        maxHeight: 100
+                    });
+                    document.getElementById("img-container").appendChild(img.cloneNode(true));
+                }
+            }
+        };
+
+    </script>
+</body>
+
+</html>

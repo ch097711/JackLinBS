@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Place Searches</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlKWP4uWjQIR3WDAWLAu6rUhBfc3_ppag&callback=initMap&libraries=places&v=weekly"
+        defer></script>
+    <style type="text/css">
+        /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+        #map {
+            height: 100%;
+        }
+
+        #pano {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 30%;
+            height: 30%;
+            background-color: black;
+        }
+
+        /* Optional: Makes the sample page fill the window. */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <script>
+
+        // This example requires the Places library. Include the libraries=places
+        // parameter when you first load the API. For example:
+        // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+        let map;
+        let service;
+        let infowindow;
+        let placeid;
+
+        function initMap() {
+            const sydney = new google.maps.LatLng(121.479008, 25.018661);
+            infowindow = new google.maps.InfoWindow();
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: sydney,
+                zoom: 15
+            });
+            var marker = new google.maps.Marker({
+                map,
+                position: { lat: 25.018661, lng: 121.479008 }
+            });
+            const request1 = {
+                query: "新北市板橋區中山路二段湯明藥局",
+                fields: ["name", "geometry", "place_id"]
+            };
+            service = new google.maps.places.PlacesService(map);
+            service.findPlaceFromQuery(request1, (results, status) => {
+                if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    // createMarker(results[0]);
+                    map.setCenter(results[0].geometry.location);
+                    var request = {
+                        placeId: results[0].place_id
+                    };
+                    service.getDetails(request, callback);
+                    function callback(place, status) {
+                        if (status == google.maps.places.PlacesServiceStatus.OK) {
+
+                            createMarker(place);
+                            console.log(place.geometry.location);
+                            console.log(place.geometry.viewport);
+                            debugger;
+                            createPhotoMarker(place);
+                        }
+                    }
+                    // var heading = google.maps.geometry.spherical.computeHeading(results[0].geometry.location);
+                    const panorama = new google.maps.StreetViewPanorama(
+                        document.getElementById("pano"),
+                        {
+                            position: { lat: 25.018661, lng: 121.479008 },
+                            pov: {
+                                heading: 10,
+                                pitch: 0
+                            }
+                        }
+                    );
+                    map.setStreetView(panorama);
+                }
+            });
+
+        }
+
+        function createMarker(place) {
+            var marker = new google.maps.Marker({
+                map,
+                position: place.geometry.location
+            });
+            google.maps.event.addListener(marker, "click", () => {
+                infowindow.setContent(place.name);
+                infowindow.open(map, marker);
+            });
+        }
+
+        function createPhotoMarker(place) {
+            var photos = place.photos;
+            if (!photos) {
+                return;
+            }
+
+            var marker = new google.maps.Marker({
+                map: map,
+                position: place.geometry.location,
+                title: place.name,
+                icon: photos[0].getUrl({ maxWidth: 350, maxHeight: 350 })
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <div id="map"></div>
+    <div id="pano"></div>
+</body>
+
+</html>
