@@ -19,6 +19,7 @@
 
         #pano {
             height: 40%;
+            margin-top: 50px;
         }
 
         /* Optional: Makes the sample page fill the window. */
@@ -42,6 +43,7 @@
 
         .content span {
             font-size: 1.6rem;
+            /* margin-top: 5px; */
         }
 
         .content .updatedTime {
@@ -105,7 +107,6 @@
             let data = await json.features;
             return data;
         };
-        getMaskdata().then(data => { console.log(data[1].geometry.coordinates); })
 
         function initMap() {
 
@@ -298,6 +299,7 @@
                     var address = data[i].properties.address;
                     var phone = data[i].properties.phone;
                     var updated = data[i].properties.updated;
+                    var note = data[i].properties.note.replace("-", "  ");
                     var icon = {
                         url: number(maskAdult), // url
                         scaledSize: new google.maps.Size(50, 50),
@@ -322,7 +324,7 @@
                         // label: "abc",
                         // title: 'Hello World!'
                     });
-                    var content = `<h1>${name}</h1><span id="open"></span><br><span id="distance"></span><br>成人口罩 : ${maskAdult}<br>小孩口罩 : ${maskChild}<a href="https://www.google.com/maps/dir/current+location/${address}"><h2>地址</h2><span>${address}</span></a><a href="tel:${phone}"><h2>電話</h2><span>${phone}</span></a><div class="updatedTime">更新時間 : ${updated.slice(-8)}</div><div class="button">x</div>`
+                    var content = `<h1>${name}</h1><span id="open"></span><br><span id="distance"></span><br><span>${note}</span><br>成人口罩 : ${maskAdult}<br>小孩口罩 : ${maskChild}<a href="https://www.google.com/maps/dir/current+location/${address}"><h2>地址</h2><span>${address}</span></a><a href="tel:${phone}"><h2>電話</h2><span>${phone}</span></a><div class="updatedTime">更新時間 : ${updated.slice(-8)}</div><div class="button">x</div>`
                     contentSet(marker, content, { lat: lat, lng: lng }, name);
                 }
 
@@ -381,9 +383,10 @@
                                 }
                             }
                         }
+
                         var request = {
                             query: name,
-                            fields: ["name", "geometry", "place_id"]
+                            fields: ["place_id"]
                         }
                         service.findPlaceFromQuery(request, result => {
                             var request = {
@@ -393,8 +396,6 @@
 
                             function callback(place, status) {
                                 if (status == google.maps.places.PlacesServiceStatus.OK) {
-                                    console.log(place);
-                                    console.log(place.opening_hours.isOpen());
                                     if (place.opening_hours.isOpen() == true) {
                                         document.getElementById("open").textContent = "營業中";
                                         document.getElementById("open").style.color = "green";
