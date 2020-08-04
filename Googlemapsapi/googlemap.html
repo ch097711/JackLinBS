@@ -560,24 +560,25 @@
             }
             google.maps.event.addListenerOnce(map, 'idle', function () {
                 document.querySelector(".flexsearch").innerHTML = "<div class='flexsearch--wrapper'><form class='flexsearch--form'><div class='flexsearch--input-wrapper'><input class='flexsearch--input' placeholder='search'></div><input class='flexsearch--submit' value='&#10140;'></form></div>";
-            });
-
-
-            geocoder = new google.maps.Geocoder();
-            var submitBtn = document.querySelector(".flexsearch--submit")
-            var input = document.querySelector(".flexsearch--input")
-            submitBtn.addEventListener('click', function () {
-                console.log(input.value);
-                geocoder.geocode({
-                    'address': input.value
-                }, function (results, status) {
-                    if (status == 'OK') {
-                        map.panTo(results[0].geometry.location);
-                    } else {
-                        console.log(status);
-                    }
+                geocoder = new google.maps.Geocoder();
+                var submitBtn = document.querySelector(".flexsearch--submit")
+                var input = document.querySelector(".flexsearch--input")
+                submitBtn.addEventListener('click', function () {
+                    console.log(input.value);
+                    geocoder.geocode({
+                        'address': input.value
+                    }, function (results, status) {
+                        if (status == 'OK') {
+                            map.panTo(results[0].geometry.location);
+                        } else {
+                            console.log(status);
+                        }
+                    });
                 });
             });
+
+
+
 
         }
 
