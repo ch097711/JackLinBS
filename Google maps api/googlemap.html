@@ -328,11 +328,25 @@
 
 
 
+                var prev_marker;
+                var new_marker;//設定彈跳動畫
 
                 function contentSet(marker, content, pos, name) { //設定content 調整街景預設視角角度 距離  營業時間
+
                     marker.addListener('click', () => {
-                        map.setZoom(18);//放大到選中藥局
-                        map.setCenter(pos);
+
+                        var new_marker = marker;//彈跳動畫設定
+                        if (prev_marker) {
+                            if (prev_marker.getAnimation() != null) {
+                                prev_marker.setAnimation(null);
+                                new_marker.setAnimation(google.maps.Animation.BOUNCE);
+                                prev_marker = new_marker;
+                            }
+                        } else {
+                            new_marker.setAnimation(google.maps.Animation.BOUNCE);
+                            prev_marker = new_marker;
+                        }
+
                         document.querySelector(".content").style.display = "block"
                         document.querySelector(".text").innerHTML = content;
                         document.querySelector(".button").addEventListener("click", function () {
