@@ -54,13 +54,14 @@
             });
             const request1 = {
                 query: "新北市板橋區中山路二段湯明藥局",
-                fields: ["name", "geometry", "place_id"]
+                fields: ["name", "geometry", "place_id", "opening_hours"]
             };
             service = new google.maps.places.PlacesService(map);
             service.findPlaceFromQuery(request1, (results, status) => {
                 if (status === google.maps.places.PlacesServiceStatus.OK) {
                     // createMarker(results[0]);
                     map.setCenter(results[0].geometry.location);
+                    debugger;
                     var request = {
                         placeId: results[0].place_id
                     };
