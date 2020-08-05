@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+
+</head>
+
+<body>
+    <input id="input" type="text">
+    <button onclick="saveData()">save</button>
+    <br>
+    <button onclick="loadData()">load</button>
+    <p>顯示</p>
+    <script>
+        function saveData() {
+            let temp = document.querySelector("input").value;
+            localStorage.setItem('Name', temp);
+        }
+        function loadData() {
+            let temp = localStorage.getItem("Name");
+            document.querySelector("p").innerText = temp;
+        }
+
+
+        var dateA = new Date(); //不帶參數就是現在
+        console.log(dateA);
+        var dateB = new Date(2020, 7, 5)//參數 年月日 月份1月=>0 ,8月=>7 ,月份從0開始
+        console.log(dateB);
+        console.log(dateB.getFullYear()); //年
+        console.log(dateB.getMonth()); //月
+        console.log(dateB.getDate()); //日
+        console.log(dateB.getDay()); //星期幾 禮拜天是0
+
+        console.log(new Date(2020, 1, 0).getDate());//取一月有幾天
+    </script>
+</body>
+
+</html>

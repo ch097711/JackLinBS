@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+
+</head>
+
+<body>
+    <input id="input" type="text">
+    <button onclick="saveData()">save</button>
+    <br>
+    <button onclick="loadData()">load</button>
+    <p>顯示</p>
+    <script>
+        function saveData() {
+            let temp = {
+                Name: "jack",
+                chName: "祐清",
+                color: "#ff0000"
+            }
+            localStorage.setItem("Name", JSON.stringify(temp))
+        }
+        function loadData() {
+            let temp = JSON.parse(localStorage.getItem("Name"));
+            document.querySelector("p").innerText = temp.color;
+        }
+    </script>
+</body>
+
+</html>

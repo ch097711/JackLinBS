@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+    <style>
+        .td-hover:hover,
+        .td-today {
+            color: #212529;
+            background-color: rgba(0, 0, 0, 0.075);
+            cursor: pointer;
+        }
+
+        .table {
+            width: 80%;
+            margin-bottom: 1rem;
+            color: #212529;
+            font-size: 1rem;
+            margin: auto;
+        }
+
+        .table th,
+        .table td {
+            padding: 1rem;
+            vertical-align: top;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .table-bordered {
+            border: 3px solid #dee2e6;
+        }
+
+        .table-bordered th,
+        .table-bordered td {
+            border: 3px solid #dee2e6;
+        }
+
+        thead tr:last-child td {
+            padding: 1rem;
+        }
+
+        tbody tr td {
+            font-size: 50px;
+            height: 125px;
+            box-sizing: border-box;
+        }
+
+        .btn {
+            border: none;
+        }
+
+        .btn-outline-light {
+            color: #808080;
+            border-color: #f8f9fa;
+        }
+
+        span {
+            display: inline-block;
+            width: 500px;
+        }
+
+        .displaynone {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <table class="table table-bordered text-center">
+        <thead>
+            <tr>
+                <th scope="col" colspan="7" style="font-size: 3rem; padding: 2rem;">
+                    <button type="button" class="btn btn-outline-light" onclick="prev()">prev</button>
+                    <span>2020年8月</span>
+                    <button type="button" class="btn btn-outline-light" onclick="next()">next</button>
+                </th>
+            </tr>
+            <tr>
+                <td>SUN</td>
+                <td>MON</td>
+                <td>TUS</td>
+                <td>WED</td>
+                <td>THU</td>
+                <td>FRI</td>
+                <td>SAT</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr id="lastWeek" class="displaynone">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    <script>
+
+
+        var month_leapYear = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        var month_normalYear = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        var month_name = ["January", "Febrary", "March", "April", "May", "June", "July", "Auguest", "September", "October", "November", "December"];
+        var monthYearText = document.querySelector("span");
+        var CalendarDate = new Date();
+        var Year = CalendarDate.getFullYear();
+        var Month = CalendarDate.getMonth();
+        var Day = CalendarDate.getDate();
+        var Week = CalendarDate.getDay();
+        function prev() {
+            Month--;
+            if (Month < 0) { //month 0 = 1月 <month 11 = 12月
+                Year--;
+                Month = 11;
+            }
+            init();
+        }
+        function next() {
+            Month++;
+            if (Month > 11) {//month 0 = 1月 <month 11 = 12月
+                Year++;
+                Month = 0;
+            }
+            init();
+        }
+        function monthStarWeek(month, year) { //回傳1號是禮拜幾 sun = 0
+            var x = new Date(year, month, 1);
+            return (x.getDay());
+        }
+        function daysInMonth(month, year) { //回傳月裡有幾天
+            var x = year % 4;
+            if (x === 0) {
+                return (month_leapYear[month]);
+            } else {
+                return (month_normalYear[month]);
+            }
+        }
+        function init() {
+            let lastWeek = document.getElementById("lastWeek")
+            let tdInLastWeek = document.querySelector("#lastWeek td")
+            lastWeek.classList.add("displaynone");
+            var totalDays = daysInMonth(Month, Year) //月裡有幾天
+            var startDay = monthStarWeek(Month, Year)//一號是禮拜幾
+            var x = document.querySelectorAll("tbody tr td");
+            x.forEach(i => { i.textContent = ""; i.classList.remove("td-hover") })
+            for (let i in x) {
+                if (i == startDay) {
+                    for (let e = 1; e <= totalDays; e++) {
+                        x[i].textContent = e;
+                        x[i].classList.add("td-hover")
+                        i++;
+                    }
+                }
+            }
+            monthYearText.innerHTML = `${month_name[Month]}  ${Year}`//顯示年月
+            if (tdInLastWeek.textContent !== "") {//判斷第六周有沒有內容 沒有的話就刪除class
+                lastWeek.classList.remove("displaynone");
+            }
+        }
+        init();
+    </script>
+
+</body>
+
+</html>
