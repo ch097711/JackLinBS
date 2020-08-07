@@ -35,16 +35,16 @@
         }
 
         .table-bordered {
-            border: 3px solid #dee2e6;
+            border: 2px solid #dee2e6;
         }
 
         .table-bordered th,
         .table-bordered td {
-            border: 3px solid #dee2e6;
+            border: 1px solid #dee2e6;
         }
 
         thead tr:last-child td {
-            padding: 1rem;
+            padding: 0.6rem;
         }
 
         tbody tr td {
@@ -165,8 +165,8 @@
     <script>
 
 
-        var month_leapYear = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-        var month_normalYear = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        var month_leapYear = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];//索引0是一月的天數
+        var month_normalYear = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];//索引0是一月的天數
         var month_name = ["January", "Febrary", "March", "April", "May", "June", "July", "Auguest", "September", "October", "November", "December"];
         var monthYearText = document.querySelector("span");
         var CalendarDate = new Date();
@@ -176,7 +176,7 @@
         var Week = CalendarDate.getDay();
         function prev() {
             Month--;
-            if (Month < 0) { //month 0 = 1月 <month 11 = 12月
+            if (Month < 0) { //month 0 = 1月 ,month 11 = 12月
                 Year--;
                 Month = 11;
             }
@@ -184,7 +184,7 @@
         }
         function next() {
             Month++;
-            if (Month > 11) {//month 0 = 1月 <month 11 = 12月
+            if (Month > 11) {//month 0 = 1月 ,month 11 = 12月
                 Year++;
                 Month = 0;
             }
@@ -195,7 +195,7 @@
             return (x.getDay());
         }
         function daysInMonth(month, year) { //回傳月裡有幾天
-            var x = year % 4;
+            var x = year % 4;//除4整除就是閏年
             if (x === 0) {
                 return (month_leapYear[month]);
             } else {
@@ -203,26 +203,30 @@
             }
         }
         function init() {
-            let lastWeek = document.getElementById("lastWeek")
-            let tdInLastWeek = document.querySelector("#lastWeek td")
-            lastWeek.classList.add("displaynone");
+            let lastWeek = document.getElementById("lastWeek");
+            let tdInLastWeek = document.querySelector("#lastWeek td");
             var totalDays = daysInMonth(Month, Year) //月裡有幾天
             var startDay = monthStarWeek(Month, Year)//一號是禮拜幾
-            var x = document.querySelectorAll("tbody tr td");
-            x.forEach(i => { i.textContent = ""; i.classList.remove("td-hover") })
+            var x = document.querySelectorAll("tbody tr td");//選中所有日期的td
+            x.forEach(i => { i.textContent = ""; i.classList.remove("td-hover") })//刪除日期跟hover效果
             for (let i in x) {
                 if (i == startDay) {
                     for (let e = 1; e <= totalDays; e++) {
                         x[i].textContent = e;
                         x[i].classList.add("td-hover")
+                        x[i].setAttribute("id", `${Year}${Month}${e}`)
                         i++;
                     }
                 }
             }
             monthYearText.innerHTML = `${month_name[Month]}  ${Year}`//顯示年月
+            lastWeek.classList.add("displaynone");//最後一周預設不顯示由if來判斷
             if (tdInLastWeek.textContent !== "") {//判斷第六周有沒有內容 沒有的話就刪除class
                 lastWeek.classList.remove("displaynone");
             }
+            document.getElementById("202077").classList.remove("td-today");
+            document.getElementById("202077").classList.add("td-today");
+
         }
         init();
     </script>
