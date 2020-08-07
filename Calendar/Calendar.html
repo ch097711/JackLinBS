@@ -74,6 +74,37 @@
 </head>
 
 <body>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Recipient:</label>
+                            <input type="text" class="form-control" id="recipient-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Message:</label>
+                            <textarea class="form-control" id="message-text"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Send message</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
     <table class="table table-bordered text-center">
         <thead>
             <tr>
@@ -172,8 +203,6 @@
         var CalendarDate = new Date();
         var Year = CalendarDate.getFullYear();
         var Month = CalendarDate.getMonth();
-        var Day = CalendarDate.getDate();
-        var Week = CalendarDate.getDay();
         function prev() {
             Month--;
             if (Month < 0) { //month 0 = 1月 ,month 11 = 12月
@@ -202,31 +231,40 @@
                 return (month_normalYear[month]);
             }
         }
+        function returnToday() { //回傳今天
+            var y = new Date();
+            var x = `${y.getFullYear()}${y.getMonth()}${y.getDate()}`;
+            return x;
+        }
         function init() {
             let lastWeek = document.getElementById("lastWeek");
             let tdInLastWeek = document.querySelector("#lastWeek td");
-            var totalDays = daysInMonth(Month, Year) //月裡有幾天
-            var startDay = monthStarWeek(Month, Year)//一號是禮拜幾
+            var totalDays = daysInMonth(Month, Year); //月裡有幾天
+            var startDay = monthStarWeek(Month, Year);//一號是禮拜幾
             var x = document.querySelectorAll("tbody tr td");//選中所有日期的td
-            x.forEach(i => { i.textContent = ""; i.classList.remove("td-hover") })//刪除日期跟hover效果
+            x.forEach(i => {
+                i.textContent = "";
+                i.removeAttribute("id");
+                i.removeAttribute("class");
+                i.removeAttribute("data-toggle");
+                i.removeAttribute("data-target");
+            })//刪除日期,所有class,data-toggle,data-target
             for (let i in x) {
                 if (i == startDay) {
                     for (let e = 1; e <= totalDays; e++) {
                         x[i].textContent = e;
-                        x[i].classList.add("td-hover")
-                        x[i].setAttribute("id", `${Year}${Month}${e}`)
+                        x[i].classList.add("td-hover");
+                        x[i].setAttribute("id", `${Year}${Month}${e}`);
+                        x[i].setAttribute("data-toggle", "modal");
+                        x[i].setAttribute("data-target", "#exampleModal");
+                        if (x[i].id === returnToday()) document.getElementById(returnToday()).classList.add("td-today");//找出今天並加入背景標示
                         i++;
                     }
                 }
-            }
-            monthYearText.innerHTML = `${month_name[Month]}  ${Year}`//顯示年月
+            };
+            monthYearText.innerHTML = `${month_name[Month]}  ${Year}`;//顯示年月
             lastWeek.classList.add("displaynone");//最後一周預設不顯示由if來判斷
-            if (tdInLastWeek.textContent !== "") {//判斷第六周有沒有內容 沒有的話就刪除class
-                lastWeek.classList.remove("displaynone");
-            }
-            document.getElementById("202077").classList.remove("td-today");
-            document.getElementById("202077").classList.add("td-today");
-
+            if (tdInLastWeek.textContent !== "") lastWeek.classList.remove("displaynone");//判斷第六周有沒有內容 沒有的話就刪除class
         }
         init();
     </script>

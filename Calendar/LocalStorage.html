@@ -34,9 +34,10 @@
         console.log(dateB.getFullYear()); //年
         console.log(dateB.getMonth()); //月
         console.log(dateB.getDate()); //日
+        console.log(`${dateB.getFullYear()}${dateB.getMonth()}${dateB.getDate()}`); //日
         console.log(dateB.getDay()); //星期幾 禮拜天是0
 
-        console.log(new Date(2020, 1, 0).getDate());//取一月有幾天
+        console.log(new Date(2020, 1, 0).getDate());//取一月有幾天 0代表上個月的最後一天
     </script>
 </body>
 
