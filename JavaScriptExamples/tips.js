@@ -55,6 +55,7 @@ console.log(arr.slice(1, 3));//[ 2, 3 ]
 var arr = [1, 2, 3, 4, 5, 6, 7, 8];
 var arrObject = { ...arr };
 console.log(arrObject);
+console.log(arr);
 
 
 //object  to array
@@ -85,11 +86,23 @@ console.log(`${endAt - startAt} took milliseconds to excute`);
     console.log('hieeee');
 })();
 console.log('hieee again');
-//hi();//not defined
+// hi();//not defined
 
 (function (name) {
     return console.log('Hello' + name)
 })('Iris') // 立即呼叫
+
+var hello = function (name) {
+    console.log('Hello ' + name);
+}('jack');
+
+
+var hello = function (name) {
+    return ('Hello ' + name);
+}('jack');
+console.log(hello);
+
+
 
 //使用IIFE避免變數互相污染
 //若想要更改IFFE外的變數，代入即可

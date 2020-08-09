@@ -12,19 +12,23 @@
 
     <title>Hello, world!</title>
     <style>
-        .td-hover:hover,
+        .monthNumber:hover,
         .td-today {
             color: #212529;
             background-color: rgba(0, 0, 0, 0.075);
             cursor: pointer;
         }
 
+        body {
+            display: flex;
+        }
+
+
         .table {
-            width: 80%;
-            margin-bottom: 1rem;
+            width: 70%;
+            margin-bottom: 0;
             color: #212529;
             font-size: 1rem;
-            margin: auto;
         }
 
         .table th,
@@ -49,7 +53,7 @@
 
         tbody tr td {
             font-size: 50px;
-            height: 125px;
+            height: 12px;
             box-sizing: border-box;
         }
 
@@ -70,6 +74,15 @@
         .displaynone {
             display: none;
         }
+
+        .things {
+            background-color: rgb(247, 248, 250);
+            width: 30%;
+        }
+
+        .things h1 {
+            margin-left: 20px;
+        }
     </style>
 </head>
 
@@ -78,25 +91,27 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Event</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     </button>
                 </div>
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Recipient:</label>
-                            <input type="text" class="form-control" id="recipient-name">
+                            <label for="title" class="col-form-label">Title:</label>
+                            <input type="text" class="form-control" id="title" required>
                         </div>
                         <div class="form-group">
-                            <label for="message-text" class="col-form-label">Message:</label>
-                            <textarea class="form-control" id="message-text"></textarea>
+                            <label for="time" class="col-form-label">time:</label>
+                            <input type="time" class="form-control" id="time">
                         </div>
+                        <div class="form-group">
+                            <label for="memo" class="col-form-label">Memo:</label>
+                            <textarea class="form-control" id="memo"></textarea>
+                        </div>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" id="save">Save</button>
                     </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Send message</button>
                 </div>
             </div>
         </div>
@@ -182,6 +197,21 @@
         </tbody>
     </table>
 
+    <div class="things">
+        <h1>ALL-DAY
+            <button type="button" id="rightAddbtn" class="btn btn-outline-dark" data-toggle="modal"
+                data-target="#exampleModal">add</button>
+        </h1>
+
+        <!-- <div class="card w-75">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Button</a>
+            </div>
+        </div> -->
+    </div>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -194,7 +224,6 @@
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
     <script>
-
 
         var month_leapYear = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];//索引0是一月的天數
         var month_normalYear = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];//索引0是一月的天數
@@ -236,27 +265,74 @@
             var x = `${y.getFullYear()}${y.getMonth()}${y.getDate()}`;
             return x;
         }
+
+
+        createMemo(returnToday());//讓備忘錄的加號在網頁剛開始時就能運作
+
+
+        function createMemo(ID) {////
+            document.getElementById("save").outerHTML = document.getElementById("save").outerHTML//刪除SAVE的監聽
+            var saveBtn = document.getElementById("save");
+            var title = document.getElementById("title");
+            var time = document.getElementById("time");
+            var memo = document.getElementById("memo");
+
+            saveBtn.addEventListener("click", function (e) {
+                if (title.value !== "") {
+                    let temp = [];
+                    let oldData = JSON.parse(localStorage.getItem(ID));
+                    let newData =
+                    {
+                        title: title.value,
+                        time: time.value,
+                        memo: memo.value
+                    }
+                    if (oldData == null) {
+                        temp.push(newData);
+                    }
+                    else {
+                        var arr = Object.keys(oldData).map(function (k) { return oldData[k] });
+                        arr.push(newData);
+                        temp = arr;
+                    }
+
+                    localStorage.setItem(ID, JSON.stringify(temp));
+                    title.value = '';//讓每次開啟時資料空白
+                    time.value = '';
+                    memo.value = '';
+                    $('#exampleModal').modal('hide');
+                }
+            })
+        }
+
+
+
         function init() {
+            document.querySelector("tbody").outerHTML = document.querySelector("tbody").outerHTML//刪除TBODY的監聽
             let lastWeek = document.getElementById("lastWeek");
             let tdInLastWeek = document.querySelector("#lastWeek td");
             var totalDays = daysInMonth(Month, Year); //月裡有幾天
             var startDay = monthStarWeek(Month, Year);//一號是禮拜幾
             var x = document.querySelectorAll("tbody tr td");//選中所有日期的td
+
             x.forEach(i => {
                 i.textContent = "";
                 i.removeAttribute("id");
                 i.removeAttribute("class");
                 i.removeAttribute("data-toggle");
                 i.removeAttribute("data-target");
+
             })//刪除日期,所有class,data-toggle,data-target
             for (let i in x) {
                 if (i == startDay) {
                     for (let e = 1; e <= totalDays; e++) {
                         x[i].textContent = e;
-                        x[i].classList.add("td-hover");
-                        x[i].setAttribute("id", `${Year}${Month}${e}`);
-                        x[i].setAttribute("data-toggle", "modal");
-                        x[i].setAttribute("data-target", "#exampleModal");
+                        x[i].classList.add("monthNumber");
+                        x[i].setAttribute("id", `${Year}${Month}${e}`); x[i].setAttribute("data-toggle", "modal"); x[i].setAttribute("data-target", "#exampleModal");
+                        x[i].addEventListener("click", function () {
+                            createMemo(`${Year}${Month}${e}`)
+
+                        })
                         if (x[i].id === returnToday()) document.getElementById(returnToday()).classList.add("td-today");//找出今天並加入背景標示
                         i++;
                     }
@@ -265,8 +341,11 @@
             monthYearText.innerHTML = `${month_name[Month]}  ${Year}`;//顯示年月
             lastWeek.classList.add("displaynone");//最後一周預設不顯示由if來判斷
             if (tdInLastWeek.textContent !== "") lastWeek.classList.remove("displaynone");//判斷第六周有沒有內容 沒有的話就刪除class
+
         }
         init();
+
+
     </script>
 
 </body>
