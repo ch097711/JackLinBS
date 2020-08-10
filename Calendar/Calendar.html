@@ -83,6 +83,17 @@
         .things h1 {
             margin-left: 20px;
         }
+
+        #rightAddbtn {
+            font-weight: 500;
+            font-size: 30px;
+        }
+
+        .btn-dark {
+            color: #fff;
+            background-color: #475058;
+            border-color: #475058;
+        }
     </style>
 </head>
 
@@ -116,10 +127,6 @@
             </div>
         </div>
     </div>
-
-
-
-
     <table class="table table-bordered text-center">
         <thead>
             <tr>
@@ -197,19 +204,14 @@
         </tbody>
     </table>
 
-    <div class="things">
+    <div class="things ">
         <h1>ALL-DAY
-            <button type="button" id="rightAddbtn" class="btn btn-outline-dark" data-toggle="modal"
-                data-target="#exampleModal">add</button>
+            <button type="button" id="rightAddbtn" class="btn btn-dark" data-toggle="modal"
+                data-target="#exampleModal">+</button>
         </h1>
 
-        <!-- <div class="card w-75">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Button</a>
-            </div>
-        </div> -->
+        <div class="cardBox" style="border-top: 1px black solid;">
+        </div>
     </div>
 
     <!-- Optional JavaScript -->
@@ -276,8 +278,8 @@
             var title = document.getElementById("title");
             var time = document.getElementById("time");
             var memo = document.getElementById("memo");
-
-            saveBtn.addEventListener("click", function (e) {
+            showMemo(ID);
+            saveBtn.addEventListener("click", function save(e) {
                 if (title.value !== "") {
                     let temp = [];
                     let oldData = JSON.parse(localStorage.getItem(ID));
@@ -291,17 +293,72 @@
                         temp.push(newData);
                     }
                     else {
-                        var arr = Object.keys(oldData).map(function (k) { return oldData[k] });
+                        var arr = Object.keys(oldData).map(k => { return oldData[k] });
                         arr.push(newData);
                         temp = arr;
                     }
 
                     localStorage.setItem(ID, JSON.stringify(temp));
-                    title.value = '';//讓每次開啟時資料空白
+                    title.value = '';//讓每次關閉時清空表格
                     time.value = '';
                     memo.value = '';
                     $('#exampleModal').modal('hide');
+                    showMemo(ID);
                 }
+            })
+        }
+        function showMemo(ID) {
+            let oldData = JSON.parse(localStorage.getItem(ID));
+            let cardBox = document.querySelector(".cardBox");
+            cardBox.innerHTML = "";
+            if (oldData !== null) { //代表key裡有資料
+                var arr = Object.keys(oldData).map(k => { return oldData[k] });
+                arr.forEach((item, index, array) => {
+                    var card =
+                        `<div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">${item.title}</h5>
+                            <span>${item.time}</span>
+                            <p class="card-text">${item.memo}</p>
+                            <button type="button"  onclick="changeData(${index},${ID})" class="btn btn-primary" data-toggle="modal"
+                        data-target="#exampleModal">change</button>
+                    <button type="button" onclick="del(${index},${ID})" class="btn btn-danger">delete</button>
+                        </div>
+                    </div>`;
+                    cardBox.innerHTML = cardBox.innerHTML + card
+                })
+            }
+        }
+
+        function del(index, ID) {
+            let oldData = JSON.parse(localStorage.getItem(ID));
+            var arr = Object.keys(oldData).map(k => { return oldData[k] });
+            arr.splice(index, 1);
+            localStorage.setItem(ID, JSON.stringify(arr));
+            showMemo(ID);
+        }
+        function changeData(index, ID) {
+            document.getElementById("save").outerHTML = document.getElementById("save").outerHTML//刪除SAVE的監聽
+            var saveBtn = document.getElementById("save");
+            var title = document.getElementById("title");
+            var time = document.getElementById("time");
+            var memo = document.getElementById("memo");
+            let oldData = JSON.parse(localStorage.getItem(ID));
+            var arr = Object.keys(oldData).map(k => { return oldData[k] });
+            title.value = arr[index].title;
+            time.value = arr[index].time;
+            memo.value = arr[index].memo;
+            saveBtn.addEventListener("click", function () {
+                arr[index].title = title.value;
+                arr[index].time = time.value;
+                arr[index].memo = memo.value;
+                localStorage.setItem(ID, JSON.stringify(arr));
+                title.value = '';//讓每次關閉時清空表格
+                time.value = '';
+                memo.value = '';
+                showMemo(ID);
+                $('#exampleModal').modal('hide');
+                createMemo(ID)
             })
         }
 
@@ -328,10 +385,10 @@
                     for (let e = 1; e <= totalDays; e++) {
                         x[i].textContent = e;
                         x[i].classList.add("monthNumber");
-                        x[i].setAttribute("id", `${Year}${Month}${e}`); x[i].setAttribute("data-toggle", "modal"); x[i].setAttribute("data-target", "#exampleModal");
-                        x[i].addEventListener("click", function () {
+                        // x[i].setAttribute("id", `${Year}${Month}${e}`); x[i].setAttribute("data-toggle", "modal"); x[i].setAttribute("data-target", "#exampleModal");
+                        x[i].setAttribute("id", `${Year}${Month}${e}`);
+                        x[i].addEventListener("click", function () { //點td觸發createMemo
                             createMemo(`${Year}${Month}${e}`)
-
                         })
                         if (x[i].id === returnToday()) document.getElementById(returnToday()).classList.add("td-today");//找出今天並加入背景標示
                         i++;

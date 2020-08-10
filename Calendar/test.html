@@ -1,143 +1,240 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>行事曆</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
-        integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.css' />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
     <style>
-        .container {
-            position: relative;
+        .monthNumber:hover,
+        .td-today {
+            color: #212529;
+            background-color: rgba(0, 0, 0, 0.075);
+            cursor: pointer;
         }
 
-        .pre {
-            position: absolute;
-            left: 0;
-            top: 0;
+        body {
+            display: flex;
         }
 
-        .next {
-            position: absolute;
-            right: 0;
-            top: 0;
+
+        .table {
+            width: 70%;
+            margin-bottom: 0;
+            color: #212529;
+            font-size: 1rem;
         }
 
-        thead th {
-            border-bottom-width: 3px;
-        }
-
+        .table th,
         .table td {
-            width: 100px;
-            height: 100px;
+            padding: 1rem;
+            vertical-align: top;
+            border-top: 1px solid #dee2e6;
         }
 
-        .table-bordered td,
-        .table-bordered th {
-            border: 2px solid#dee2e6;
+        .table-bordered {
+            border: 2px solid #dee2e6;
+        }
+
+        .table-bordered th,
+        .table-bordered td {
+            border: 1px solid #dee2e6;
+        }
+
+        thead tr:last-child td {
+            padding: 0.6rem;
+        }
+
+        tbody tr td {
+            font-size: 50px;
+            height: 12px;
+            box-sizing: border-box;
+        }
+
+        .btn {
+            border: none;
+        }
+
+        .btn-outline-light {
+            color: #808080;
+            border-color: #f8f9fa;
+        }
+
+        span {
+            display: inline-block;
+            width: 500px;
+        }
+
+        .displaynone {
+            display: none;
+        }
+
+        .things {
+            background-color: rgb(247, 248, 250);
+            width: 30%;
+        }
+
+        .things h1 {
+            margin-left: 20px;
+        }
+
+        #rightAddbtn {
+            font-weight: 500;
+            font-size: 30px;
+        }
+
+        .btn-dark {
+            color: #fff;
+            background-color: #475058;
+            border-color: #475058;
+        }
+
+        .ball {
+            margin-right: 2px;
+            width: 10px;
+            height: 10px;
+            background-color: green;
+            border-radius: 50%;
+        }
+
+        .color {
+            display: flex;
+            justify-content: center;
         }
     </style>
 </head>
 
 <body>
-    <div class="table-responsive">
-        <div class="container">
-            <h1 class="month text-center my-3"></h1>
-            <table class="table table-bordered text-center">
-                <thead>
-                    <tr>
-                        <th scope="col">Sun</th>
-                        <th scope="col">Mon</th>
-                        <th scope="col">Tue</th>
-                        <th scope="col">Wen</th>
-                        <th scope="col">Thu</th>
-                        <th scope="col">Fri</th>
-                        <th scope="col">Sat</th>
-                    </tr>
-                </thead>
-                ｀ <tbody>
-                </tbody>
-            </table>
-            <div class="pre">
-                <i class="fas fa-arrow-left fa-2x"></i>
-            </div>
-            <div class="next">
-                <i class="fas fa-arrow-right fa-2x"></i>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Event</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="title" class="col-form-label">Title:</label>
+                            <input type="text" class="form-control" id="title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="time" class="col-form-label">time:</label>
+                            <input type="time" class="form-control" id="time">
+                        </div>
+                        <div class="form-group">
+                            <label for="memo" class="col-form-label">Memo:</label>
+                            <textarea class="form-control" id="memo"></textarea>
+                        </div>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" id="save">Save</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
+    <table class="table table-bordered text-center">
+        <thead>
+            <tr>
+                <th scope="col" colspan="7" style="font-size: 3rem; padding: 2rem;">
+                    <button type="button" class="btn btn-outline-light" onclick="prev()">prev</button>
+                    <span>2020年8月</span>
+                    <button type="button" class="btn btn-outline-light" onclick="next()">next</button>
+                </th>
+            </tr>
+            <tr>
+                <td>SUN</td>
+                <td>MON</td>
+                <td>TUS</td>
+                <td>WED</td>
+                <td>THU</td>
+                <td>FRI</td>
+                <td>SAT</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>12
+                    <div class="color">
+                        <!-- <div class="ball"></div>
+                        <div class="ball"></div>
+                        <div class="ball"></div>
+                        <div class="ball"></div> -->
+                    </div>
+                </td>
+                <td>12</td>
+                <td>12</td>
+                <td>12</td>
+                <td>12</td>
+                <td>12</td>
+                <td>12</td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>12</td>
+                <td>12</td>
+                <td>12</td>
+                <td>12</td>
+                <td>12</td>
+                <td>12</td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>12</td>
+                <td>12</td>
+                <td>12</td>
+                <td>12</td>
+                <td>12</td>
+                <td>12</td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>12</td>
+                <td>12</td>
+                <td>12</td>
+                <td>12</td>
+                <td>12</td>
+                <td>12</td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>12</td>
+                <td>12</td>
+                <td>12</td>
+                <td>12</td>
+                <td>12</td>
+                <td>12</td>
+            </tr>
+            <tr id="lastWeek" class="displaynone">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js"
-        integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J"
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
-    <script>
-        let date = new Date();
-        let currentYear = date.getFullYear()
-        let currentMonth = date.getMonth();
-        console.log(currentMonth)
-
-        let firstDay = new Date(currentYear, currentMonth, 1).getDay() // 星期六
-        let monthDay = new Date(currentYear, currentMonth + 1, 0).getDate() // 31
-
-        let tbody = document.querySelector('tbody')
-
-        function init() {
-            let dayCount = 1; // 日期變數
-            tbody.innerHTML = "";
-            // 先長出第一列
-            let FirstTr = document.createElement('tr');
-
-            for (let i = 0; i < 7; i++) {
-                let td = document.createElement('td');
-                if (i >= firstDay) {
-                    td.textContent = dayCount
-                    dayCount++
-                }
-                FirstTr.appendChild(td)
-            }
-
-            tbody.appendChild(FirstTr)
-
-            // 其餘列數
-            for (let i = 0; i < Math.ceil(monthDay / 7); i++) {
-                let tr = document.createElement('tr')
-                for (let i = 0; i < 7; i++) {
-                    let td = document.createElement('td')
-                    if (dayCount <= monthDay) {
-                        td.innerText = dayCount
-                        dayCount++
-                    }
-                    tr.appendChild(td)
-                }
-                tbody.appendChild(tr)
-            }
-        }
-
-        init()
-
-        document.querySelector('.pre').addEventListener('click', preMonth)
-        document.querySelector('.next').addEventListener('click', nextMonth)
-
-        function preMonth() {
-            currentMonth = currentMonth - 1;
-            firstDay = new Date(currentYear, currentMonth, 1).getDay()
-            monthDay = new Date(currentYear, currentMonth + 1, 0).getDate()
-            init()
-            console.log(currentMonth, firstDay, monthDay)
-        }
-
-        function nextMonth() {
-            console.log(456)
-        }
-    </script>
 </body>
 
 </html>
