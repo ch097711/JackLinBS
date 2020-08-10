@@ -94,6 +94,25 @@
             background-color: #475058;
             border-color: #475058;
         }
+
+        .ball {
+            margin-right: 2px;
+            width: 10px;
+            height: 10px;
+            /* background-color: green; */
+            border-radius: 50%;
+        }
+
+        .color {
+            position: absolute;
+            display: flex;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        tbody td {
+            position: relative;
+        }
     </style>
 </head>
 
@@ -119,6 +138,9 @@
                         <div class="form-group">
                             <label for="memo" class="col-form-label">Memo:</label>
                             <textarea class="form-control" id="memo"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="color" id="colorPick" />
                         </div>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary" id="save">Save</button>
@@ -269,7 +291,7 @@
         }
 
 
-        createMemo(returnToday());//讓備忘錄的加號在網頁剛開始時就能運作
+
 
 
         function createMemo(ID) {////
@@ -278,7 +300,9 @@
             var title = document.getElementById("title");
             var time = document.getElementById("time");
             var memo = document.getElementById("memo");
+            var color = document.getElementById("colorPick");
             showMemo(ID);
+            colorBall(ID);
             saveBtn.addEventListener("click", function save(e) {
                 if (title.value !== "") {
                     let temp = [];
@@ -287,7 +311,8 @@
                     {
                         title: title.value,
                         time: time.value,
-                        memo: memo.value
+                        memo: memo.value,
+                        color: color.value
                     }
                     if (oldData == null) {
                         temp.push(newData);
@@ -304,6 +329,7 @@
                     memo.value = '';
                     $('#exampleModal').modal('hide');
                     showMemo(ID);
+                    colorBall(ID);
                 }
             })
         }
@@ -315,10 +341,9 @@
                 var arr = Object.keys(oldData).map(k => { return oldData[k] });
                 arr.forEach((item, index, array) => {
                     var card =
-                        `<div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">${item.title}</h5>
-                            <span>${item.time}</span>
+                        `<div class="card"  style="border: ${item.color} 2px solid;">
+                        <div class="card-body" >
+                            <h5 class="card-title">${item.title}<br><span style="font-size:15px;">${item.time}</span></h5>
                             <p class="card-text">${item.memo}</p>
                             <button type="button"  onclick="changeData(${index},${ID})" class="btn btn-primary" data-toggle="modal"
                         data-target="#exampleModal">change</button>
@@ -326,6 +351,20 @@
                         </div>
                     </div>`;
                     cardBox.innerHTML = cardBox.innerHTML + card
+                })
+            }
+            colorBall(ID)
+        }
+        function colorBall(ID) {
+            let oldData = JSON.parse(localStorage.getItem(ID));
+            if (oldData !== null) {
+                var arr = Object.keys(oldData).map(k => { return oldData[k] });
+                var x = document.getElementById(`${ID}`);
+                var color = x.querySelector(".color");
+                color.innerHTML = ""
+                arr.forEach(item => {
+                    var x = item.color;
+                    color.innerHTML = color.innerHTML + `<div class='ball' style='background-color:${x} ;''></div>`;
                 })
             }
         }
@@ -343,6 +382,7 @@
             var title = document.getElementById("title");
             var time = document.getElementById("time");
             var memo = document.getElementById("memo");
+            var color = document.getElementById("colorPick");
             let oldData = JSON.parse(localStorage.getItem(ID));
             var arr = Object.keys(oldData).map(k => { return oldData[k] });
             title.value = arr[index].title;
@@ -352,6 +392,7 @@
                 arr[index].title = title.value;
                 arr[index].time = time.value;
                 arr[index].memo = memo.value;
+                arr[index].color = color.value;
                 localStorage.setItem(ID, JSON.stringify(arr));
                 title.value = '';//讓每次關閉時清空表格
                 time.value = '';
@@ -383,7 +424,7 @@
             for (let i in x) {
                 if (i == startDay) {
                     for (let e = 1; e <= totalDays; e++) {
-                        x[i].textContent = e;
+                        x[i].innerHTML = `${e}<div class="color"></div>`;
                         x[i].classList.add("monthNumber");
                         // x[i].setAttribute("id", `${Year}${Month}${e}`); x[i].setAttribute("data-toggle", "modal"); x[i].setAttribute("data-target", "#exampleModal");
                         x[i].setAttribute("id", `${Year}${Month}${e}`);
@@ -391,6 +432,7 @@
                             createMemo(`${Year}${Month}${e}`)
                         })
                         if (x[i].id === returnToday()) document.getElementById(returnToday()).classList.add("td-today");//找出今天並加入背景標示
+                        colorBall(x[i].id)
                         i++;
                     }
                 }
@@ -401,6 +443,8 @@
 
         }
         init();
+        createMemo(returnToday());//讓備忘錄的加號在網頁剛開始時就能運作
+
 
 
     </script>

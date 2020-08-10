@@ -104,8 +104,14 @@
         }
 
         .color {
+            position: absolute;
             display: flex;
-            justify-content: center;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        tbody td {
+            position: relative;
         }
     </style>
 </head>
@@ -163,10 +169,11 @@
             <tr>
                 <td>12
                     <div class="color">
-                        <!-- <div class="ball"></div>
                         <div class="ball"></div>
                         <div class="ball"></div>
-                        <div class="ball"></div> -->
+                        <div class="ball" id="one"></div>
+                        <!-- <div class="ball"></div> -->
+                        <!-- <div class="ball"></div> -->
                     </div>
                 </td>
                 <td>12</td>
@@ -235,6 +242,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
+    <script>
+        var ball = document.getElementById("one")
+        document.querySelector(".color").removeChild(ball)
+    </script>
 </body>
 
 </html>
