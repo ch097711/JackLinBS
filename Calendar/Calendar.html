@@ -29,11 +29,12 @@
             margin-bottom: 0;
             color: #212529;
             font-size: 1rem;
+            margin: auto;
         }
 
         .table th,
         .table td {
-            padding: 1rem;
+            padding: calc(1rem-4);
             vertical-align: top;
             border-top: 1px solid #dee2e6;
         }
@@ -104,6 +105,7 @@
         }
 
         .color {
+            bottom: 10px;
             position: absolute;
             display: flex;
             left: 50%;
@@ -226,7 +228,7 @@
         </tbody>
     </table>
 
-    <div class="things ">
+    <div class="things" style="display: none;">
         <h1>ALL-DAY
             <button type="button" id="rightAddbtn" class="btn btn-dark" data-toggle="modal"
                 data-target="#exampleModal">+</button>
@@ -241,6 +243,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
@@ -402,6 +405,12 @@
                 createMemo(ID)
             })
         }
+        function show() {
+            document.querySelector("table").style.margin = "none";
+            // document.querySelector(".things").style.display="block";
+            $('.things').show("slow");
+
+        }
 
 
 
@@ -430,6 +439,7 @@
                         x[i].setAttribute("id", `${Year}${Month}${e}`);
                         x[i].addEventListener("click", function () { //點td觸發createMemo
                             createMemo(`${Year}${Month}${e}`)
+                            show()
                         })
                         if (x[i].id === returnToday()) document.getElementById(returnToday()).classList.add("td-today");//找出今天並加入背景標示
                         colorBall(x[i].id)
