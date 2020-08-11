@@ -30,6 +30,7 @@
             color: #212529;
             font-size: 1rem;
             margin: auto;
+            margin-top: 0;
         }
 
         .table th,
@@ -79,6 +80,7 @@
         .things {
             background-color: rgb(247, 248, 250);
             width: 30%;
+            max-height: 90vh;
         }
 
         .things h1 {
@@ -110,10 +112,23 @@
             display: flex;
             left: 50%;
             transform: translateX(-50%);
+            line-height: 10px;
         }
 
         tbody td {
             position: relative;
+        }
+
+        #closeBtn {
+            border-radius: 50%;
+            height: 20px;
+            width: 20px;
+            font-size: 5px;
+            line-height: 5px;
+            padding: 0;
+            position: absolute;
+            right: 10px;
+            top: 10px;
         }
     </style>
 </head>
@@ -156,7 +171,7 @@
             <tr>
                 <th scope="col" colspan="7" style="font-size: 3rem; padding: 2rem;">
                     <button type="button" class="btn btn-outline-light" onclick="prev()">prev</button>
-                    <span>2020年8月</span>
+                    <span>5020年8月</span>
                     <button type="button" class="btn btn-outline-light" onclick="next()">next</button>
                 </th>
             </tr>
@@ -229,12 +244,12 @@
     </table>
 
     <div class="things" style="display: none;">
-        <h1>ALL-DAY
+        <h1><span style="width: 100px; ">ALL-DAY</span>
             <button type="button" id="rightAddbtn" class="btn btn-dark" data-toggle="modal"
                 data-target="#exampleModal">+</button>
+            <button type="button" id="closeBtn" class="btn btn-dark">X</button>
         </h1>
-
-        <div class="cardBox" style="border-top: 1px black solid;">
+        <div class="cardBox" style="border-top: 1px black solid;height: 100%;overflow-y: scroll;">
         </div>
     </div>
 
@@ -305,7 +320,6 @@
             var memo = document.getElementById("memo");
             var color = document.getElementById("colorPick");
             showMemo(ID);
-            colorBall(ID);
             saveBtn.addEventListener("click", function save(e) {
                 if (title.value !== "") {
                     let temp = [];
@@ -332,7 +346,6 @@
                     memo.value = '';
                     $('#exampleModal').modal('hide');
                     showMemo(ID);
-                    colorBall(ID);
                 }
             })
         }
@@ -364,10 +377,17 @@
                 var arr = Object.keys(oldData).map(k => { return oldData[k] });
                 var x = document.getElementById(`${ID}`);
                 var color = x.querySelector(".color");
-                color.innerHTML = ""
-                arr.forEach(item => {
-                    var x = item.color;
-                    color.innerHTML = color.innerHTML + `<div class='ball' style='background-color:${x} ;''></div>`;
+                color.innerHTML = "";
+                var y = 0;
+                arr.forEach((item, index) => {
+                    if (index < 5) {
+                        var x = item.color;
+                        color.innerHTML = color.innerHTML + `<div class='ball' style='background-color:${x} ;''></div>`;
+                    }
+                    else if (index == 5) {
+                        color.innerHTML = color.innerHTML + `<p style="font-size:1px;margin-bottom:0">...more</p>`
+                        y++;
+                    }
                 })
             }
         }
@@ -406,10 +426,12 @@
             })
         }
         function show() {
-            document.querySelector("table").style.margin = "none";
+            // document.querySelector("table").style.margin = "none";
             // document.querySelector(".things").style.display="block";
             $('.things').show("slow");
-
+            $('#closeBtn').click(function () {
+                $('.things').hide("slow");
+            })
         }
 
 
@@ -438,8 +460,9 @@
                         // x[i].setAttribute("id", `${Year}${Month}${e}`); x[i].setAttribute("data-toggle", "modal"); x[i].setAttribute("data-target", "#exampleModal");
                         x[i].setAttribute("id", `${Year}${Month}${e}`);
                         x[i].addEventListener("click", function () { //點td觸發createMemo
-                            createMemo(`${Year}${Month}${e}`)
-                            show()
+                            createMemo(`${Year}${Month}${e}`);
+                            show();
+                            document.querySelector(".things span").textContent = `${Month + 1}/${e}`;
                         })
                         if (x[i].id === returnToday()) document.getElementById(returnToday()).classList.add("td-today");//找出今天並加入背景標示
                         colorBall(x[i].id)
