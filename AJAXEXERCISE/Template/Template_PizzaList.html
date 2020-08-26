@@ -106,18 +106,14 @@
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
     <script type='module'>
-        import { $g } from '../Modules/helpers.js';
+        import { $g } from './helpers.js';
         let xhr = new XMLHttpRequest();
         const url = "https://raw.githubusercontent.com/ch097711/FileStorge/master/pizza.json"
         xhr.onload = function () {
             var pizzaList = JSON.parse(this.responseText);
-            console.log(pizzaList);
             for (var i = 0; i < pizzaList.length; i++) {
-                // debugger;
                 var titleArray = Object.keys(pizzaList[i]);
                 const dataArray = Object.values(pizzaList[i]);
-                // console.table(titleArray);
-                // console.table(dataArray);
                 let row = $g('.row');
 
                 let card = $g('#cardPizza');
@@ -125,7 +121,6 @@
                 cloneContent.querySelector('h5').innerText = dataArray[0];
                 cloneContent.querySelector('img').src = dataArray[2];
                 cloneContent.querySelector('.btn').addEventListener('click', function () {
-                    //alert("炭火燒肉披薩");
                     this.setAttribute("data-toggle", "modal");
                     this.setAttribute("data-target", "#exampleModal");
                     let modal = $g('#exampleModal');
@@ -134,7 +129,6 @@
                     modal.querySelector('#description').innerText = dataArray[0];
                 });
                 row.append(cloneContent);
-
             }
         }
         xhr.open('GET', url);

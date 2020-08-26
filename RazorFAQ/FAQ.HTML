@@ -23,140 +23,169 @@
             background-color: black;
         }
 
-        a {
-            color: #44d62c;
-            text-decoration-line: none;
-            text-decoration-style: solid;
-            text-decoration-color: #44d62c;
+        h2,
+        h3 {
+            color: white;
         }
 
-        .panel-container {
-            display: grid;
-            grid-gap: 1rem;
-            grid-template-columns: repeat(3, 1fr);
-            height: 100%;
-            justify-content: center;
-            margin: 0 auto;
-            max-width: 1200px;
-            position: relative;
-        }
-
-        .panel-container.col-2 {
-            grid-template-columns: repeat(2, 1fr);
+        h4 {
+            color: #CA93FE;
+            cursor: pointer;
+            font-size: 1rem;
         }
 
         ul {
-            list-style: disc;
-            margin: 0;
-            padding: 0 0 0 1rem;
-            padding-top: 0px;
-            padding-right: 0px;
-            padding-bottom: 0px;
             padding-left: 1rem;
         }
 
         ul li {
-            list-style: disc;
-            margin: 0 0 .8rem;
-            margin-top: 0px;
-            margin-right: 0px;
-            margin-bottom: 0.8rem;
-            margin-left: 0px;
-            text-align: left;
+            color: rgb(136, 136, 136);
+            margin-bottom: 1rem;
+        }
+
+        p {
+            color: white;
+            margin-bottom: 0rem;
+        }
+
+        .faq {
+            max-width: 30vw;
+        }
+
+        .background {
+            position: absolute;
+            background-image: url("assets/2000x.jpg");
+            top: 0;
+            right: 0;
+            width: 50vw;
+            height: 600px;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
     </style>
 </head>
 
 <body>
-    <div class="container" style="background-color: black;">
-        <h2
-            style="font-weight: 200; text-align: left; font-size: 2.25rem; padding: 0px 0px 2rem; color: white;background-color: black;">
-            NEED
-            HELP?</h2>
-        <div class="panel-container col-2" style="padding: 0px 0px 3rem;">
-            <div
-                style="padding: 0rem 0px; background-image: none; background-position: center bottom; background-size: cover; background-repeat: no-repeat;">
-                <div style="text-align: left; color: rgb(136, 136, 136);">
-                    <h4><span style="color:white">My Account</span></h4>
-                    <ul>
-                        <li><a href="//www.razer.com/my-account">My Order History</a>
-                            <br><br></li>
-                    </ul>
-                    <h4><span style="color:white">Order
-                            Information</span></h4>
-                    <ul>
-                        <li><a href="//www.razer.com/store-faq#q1">What is my order status?</a></li>
-                        <li><a href="//www.razer.com/store-faq#q2">When will I get my RazerStore order?</a></li>
-                        <li><a href="//www.razer.com/store-faq#q3">What payment methods can I use?</a></li>
-                        <li><a href="//www.razer.com/store-faq#q4">What is PayPal Credit?</a></li>
-                        <li><a href="//www.razer.com/store-faq#q32">What is Affirm?</a></li>
-                        <li><a href="//www.razer.com/store-faq#q5">Should I use spaces or dashes when I enter my credit
-                                card number?</a></li>
-                        <li><a href="//www.razer.com/store-faq#q6">Does my billing address have to match the address on
-                                file with my credit card?</a></li>
-                        <li><a href="//www.razer.com/store-faq#q7">Why is my credit card being rejected?</a></li>
-                        <li><a href="//www.razer.com/store-faq#q35">Would I be charged a cross border transaction
-                                fee?</a></li>
-                        <li><a href="//www.razer.com/store-faq#q8">When will my credit card be charged?</a></li>
-                        <li><a href="//www.razer.com/store-faq#q9">How will the charge appear on my credit card?</a>
-                        </li>
-                        <li><a href="//www.razer.com/store-faq#q10">Can I order without a credit card?</a></li>
-                        <li><a href="//www.razer.com/store-faq#q11">Do I have to pay sales tax?</a></li>
-                        <li><a href="//www.razer.com/store-faq#q12">How do I get a copy of my invoice?</a></li>
-                        <li><a href="https://razerid.razer.com/recovery">What do I do if I forgot my password?</a></li>
-                        <li><a href="//www.razer.com/store-faq#q14">How will you know where and how to send my physical
-                                product?</a>
-                            <br><br></li>
-                    </ul>
-                    <h4><span style="color:white">Shipping
-                            Information</span></h4>
-                    <ul>
-                        <li><a href="//www.razer.com/store-faq#q29">Has my order shipped?</a></li>
-                        <li><a href="//www.razer.com/store-faq#q30">How do I get my tracking number?</a></li>
-                        <li><a href="//www.razer.com/store-faq#q169">Do you ship to my country?</a></li>
-                        <li><a href="//www.razer.com/store-faq#q17">Do I have to pay customs fees?</a></li>
-                        <li><a href="//www.razer.com/store-faq#q18">When will my backorder ship?</a></li>
-                        <li><a href="//www.razer.com/store-faq#q19">Can I change my shipping address?</a></li>
-                        <li><a href="//www.razer.com/store-faq#q31">Can I have my order delivered to an address other
-                                than my home?</a></li>
-                        <li><a href="//www.razer.com/store-faq#q20">Can I change my shipment method?</a></li>
-                        <li><a href="//www.razer.com/store-faq#q21">Do I have to be available at home to pick up items
-                                upon delivery?</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div
-                style="padding: 0rem 0px; background-image: none; background-position: center bottom; background-size: cover; background-repeat: no-repeat;">
+    <div class="container">
+        <h2>NEED HELP?</h2>
+        <div class="faq">
+            <h3>Order Information</h3>
+            <ul>
+                <div id="accordionFirstLayer">
+                    <li data-toggle="collapse" data-target="#collapse-1">
+                        <h4>
+                            What payment methods can I use?
+                        </h4>
+                    </li>
+                    <p id="collapse-1" class="collapse" data-parent="#accordionFirstLayer">
+                        We accept PayPal, Visa®, MasterCard®, American Express®, and Diner’s Club®.
 
-                <div style="text-align: left; color: rgb(136, 136, 136);">
-                    <h4><span style="color:white"> Technical
-                            Support</span></h4>
-                    <ul>
-                        <li><a href="//www.razer.com/store-faq#q22">How do I get technical support for my product?</a>
-                        </li>
-                        <li><a href="//www.razer.com/store-faq#q23">Why do I need to set my browser to accept
-                                cookies?</a></li>
-                        <li><a href="//www.razer.com/store-faq#q24">Are cookies a security risk?</a></li>
-                        <li><a href="//www.razer.com/store-faq#q25">How do I set up my browser to accept cookies?</a>
-                            <br><br></li>
-                    </ul>
-                    <h4><span style="color:white"> Returns and
-                            Cancellations</span></h4>
-                    <ul>
-                        <li><a href="//www.razer.com/legal/returns-refunds">What is
-                                your refund policy?</a></li>
-                        <li><a href="//www.razer.com/store-faq#q26">How do I request a refund?</a></li>
-                        <li><a href="//www.razer.com/store-faq#q27">How do I cancel my order?</a></li>
-                        <li><a href="//www.razer.com/store-faq#q28">How can I return my items?</a></li>
-                        <li><a href="//www.razer.com/legal/respawn/specific-returns-and-refunds-policy">Need help with
-                                Respawn Product Returns?</a>
-                            <br><br></li>
-                    </ul>
+                        Our servers encrypt all information submitted to them, so you can be confident that your
+                        credit card information will be kept safe and secure.
+                    </p>
+                    <li data-toggle="collapse" data-target="#collapse-2">
+                        <h4>
+                            Should I use spaces or dashes when I enter my credit/debit card number?
+                        </h4>
+                    </li>
+                    <p id="collapse-2" class="collapse" data-parent="#accordionFirstLayer">
+                        No. Enter your credit/debit card number without any spaces or special characters. It should be
+                        entered as a continuous string of numbers.
+                    </p>
+                    <li data-toggle="collapse" data-target="#collapse-3">
+                        <h4>
+                            Does my billing address have to match the address on file with my credit card?
+                        </h4>
+                    </li>
+                    <p id="collapse-3" class="collapse" data-parent="#accordionFirstLayer">
+                        Yes. For credit card verification you must enter your billing address exactly as it appears on
+                        your credit card statement.
+                    </p>
 
+                    <li data-toggle="collapse" data-target="#collapse-4">
+                        <h4>
+                            Why is my debit card being rejected?
+                        </h4>
+                    </li>
+                    <p id="collapse-4" class="collapse" data-parent="#accordionFirstLayer">
+                        There are many possible reasons for a debit card not being accepted:
+                        The card is expired.
+                        You have exceeded your available money in your account.
+                    </p>
+
+                    <li data-toggle="collapse" data-target="#collapse-5">
+                        <h4>
+                            Would I be charged a cross border transaction fee?
+                        </h4>
+                    </li>
+                    <p id="collapse-5" class="collapse" data-parent="#accordionFirstLayer">
+                        You may be charged a cross border transaction fee if your transaction takes place in a different
+                        country from the one where your card was issued. This cross border transaction fee is being
+                        charged by the issuing bank. You may refer to the terms and conditions for your card or contact
+                        the issuing bank for more information.
+                    </p>
+
+                    <li data-toggle="collapse" data-target="#collapse-6">
+                        <h4>
+                            When will my credit/debit card be charged?
+                        </h4>
+                    </li>
+                    <p id="collapse-6" class="collapse" data-parent="#accordionFirstLayer">
+                        For purchases of physical products, you won't be billed until your product is being prepared for
+                        shipment. This includes any preordered or backordered products.
+                    </p>
+
+                    <li data-toggle="collapse" data-target="#collapse-7">
+                        <h4>
+                            How will the charge show up on my credit card?
+                        </h4>
+                    </li>
+                    <p id="collapse-7" class="collapse" data-parent="#accordionFirstLayer">
+                        The charge for your order will appear on your credit card as: "WWW.RAZERZONE.COM"
+                    </p>
+
+                    <li data-toggle="collapse" data-target="#collapse-8">
+                        <h4>
+                            Can I order without a credit card?
+                        </h4>
+                    </li>
+                    <p id="collapse-8" class="collapse" data-parent="#accordionFirstLayer">
+                        Yes. In addition to credit cards we accept debit card and POLi.
+                    </p>
+
+                    <li data-toggle="collapse" data-target="#collapse-9">
+                        <h4>
+                            Do I have to pay sales tax?
+                        </h4>
+                    </li>
+                    <p id="collapse-9" class="collapse" data-parent="#accordionFirstLayer">
+                        All orders are subject to sales tax or VAT according to the ship-to location. Razer will charge
+                        the corresponding sales tax or VAT upon receiving your order.
+                        Razer does not honour tax-exempt orders and resale exemption certificates.
+
+                        The price indicated includes anticipated sales tax or VAT that we will collect from you based on
+                        information you make available to us. The total price may change during the course of the
+                        shopping session depending on a number of factors. However, you will have the opportunity to
+                        review the final price we will charge before you submit your order. A national sales tax or VAT
+                        rate will be applied on physical goods for customers based in EU countries. This sales tax or
+                        VAT may not be shown as a separate charge during checkout and may instead be included in the
+                        product price (Sales tax or VAT inclusive pricing).
+                    </p>
+
+                    <li data-toggle="collapse" data-target="#collapse-10">
+                        <h4>
+                            How will you know where and how to send my physical product?
+                        </h4>
+                    </li>
+                    <p id="collapse-10" class="collapse" data-parent="#accordionFirstLayer">
+                        If you order a physical product, a Shipping Information page will appear during checkout so you
+                        can enter a shipping address and choose a shipping method.
+                    </p>
                 </div>
-            </div>
+            </ul>
         </div>
     </div>
+    <div class="background"></div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
