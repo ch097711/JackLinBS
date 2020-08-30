@@ -11,7 +11,7 @@
 @import url(../css/nice-select.css);
 @import url(../css/font-awesome.min.css);
 /* :: 3.0 Common/Base CSS */
-* {
+/* * {
   margin: 0;
   padding: 0; }
 
@@ -63,7 +63,7 @@ ol {
   margin: 0; }
   ul li,
   ol li {
-    list-style: none; }
+    list-style: none; } */
 
 img {
   height: auto;
