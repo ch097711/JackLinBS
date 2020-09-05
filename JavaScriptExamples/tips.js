@@ -114,3 +114,11 @@ var greeting = 'Hola';
     console.log(greeting + '' + name)
 })(window, 'Iris') //取用全域中的變數，並代入IIFE中來更改全域變數
 console.log(greeting) // Hello
+
+
+
+var width = 100;
+var length = 75;
+var height = 50;
+console.log(width, length, height);//100 75 50
+console.log({ width, length, height });//{ width: 100, length: 75, height: 50 }
